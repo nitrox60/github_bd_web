@@ -157,17 +157,15 @@
 			
 			$this->tpl->assign("f_addph",$f);			
 			$this->session->formPh = $f;
-			
 		}
 		
 		public function action_validePhoto(){
-			$extensions = array("png","jpg","jpeg","bmp","PNG","JPG","JPEG","BMP");
+			$extensions = array(".png",".jpg",".jpeg",".bmp",".PNG",".JPG",".JPEG",".BMP");
 			$taille_max = 100000;
-			$dossier="image/";
+			$dossier="images/";
 			$fichier=uniqid();
-			var_dump($_FILES);
-			$extension = strrchr($_FILES['photo']['name'], '.');
 			
+			$extension = strrchr($_FILES['photo']['name'], '.');
 			if(!in_array($extension, $extensions))
 				$error[]="mauvaise extension";
 				
@@ -176,8 +174,7 @@
 			
 			if($taille>$taille_max)
 				$error[]="taille trop grande";
-				
-			if(!move_uploaded_file($_FILES['photo']['tmp_name'], $dossier.$fichier))
+			if(!move_uploaded_file($_FILES['photo']['tmp_name'], $dossier.$fichier.".png"))
 				$error[]="echec upload";
 			
 			
@@ -188,22 +185,21 @@
 				$this->tpl->assign("f_addph",$f);
 				foreach($error as $err)
 				{
-					
 					$this->site->ajouter_message("-".$err);
 				}
 				
 			}
 			else{
-				$imgM= new ImageManager(DB::get_instance());
-				$imgM['idImage']=$fichier;
-				$imgM['idModele']=$this->req->id;
+				$img['idImage']=$fichier;
+				$img['idModele']=$this->req->id;
 				
-				$img=new Image($imgM);
-				$imgM->add($img); 
-				$this->site->ajouter_message("upload réussi");
+				$image=new Image($img);
+				$imgM= new ImageManager(DB::get_instance());
+				$imgM->add($image); 
+				$this->site->ajouter_message($img['idImage']);
+				$this->site->ajouter_message($this->req->id);
+				$this->site->ajouter_message("upload réussi !");
 				Site::redirect("index");
 			}
 		}
-	
-	
 	}

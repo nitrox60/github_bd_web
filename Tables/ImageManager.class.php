@@ -14,9 +14,10 @@
 		
 		public function add(Image $image){
 		
-			$q = $this->_db->prepare("INSERT INTO voiture SET idModele=:idModele");
-			if($car->getAddable()){
-            $q->execute(array(":idModele" => $image->getIdModele()));
+			$q = $this->_db->prepare("INSERT INTO image SET idImage=:idImage, idModele=:idModele");
+			if($image->getAddable()){
+            $q->execute(array(":idImage" => $image->getIdImage(),
+							":idModele" => $image->getIdModele()));
 			echo "add";
 			}
 			else echo "Les conditions d'ajouts ne sont pas validées! Voir trigger_error";

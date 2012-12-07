@@ -1,9 +1,10 @@
 <?php
 
-	class Voiture{
+	class Image{
 	
 		private $_idImage;
 		private $_idModele;
+		private $_addable;
 		
 		public function __construct(array $donnees)
 		{ 
@@ -25,11 +26,12 @@
 		}
 		
 		public function getIdImage(){ return $this->_idImage;}
-		public function getIdmodele(){ return $this->_idModele;}
+		public function getIdModele(){ return $this->_idModele;}
+		public function getAddable(){ return $this->_addable;}
 		
 		public function setIdModele($modele){
 			$modele=(int)$modele;
-			$this->_idVoiture=$modele;
+			$this->_idModele=$modele;
 		}
 		
 		public function setIdImage($image){
