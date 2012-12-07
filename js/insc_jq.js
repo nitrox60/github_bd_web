@@ -25,7 +25,7 @@
 		if($(this).val().length>=50)
 		{
 			$(this).after("<span class=\"error\"> Le nom doit être inférieur à 20 caractères</span>");
-			
+			alert('test gh');
 		}
 	
 	});
