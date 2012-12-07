@@ -1,0 +1,150 @@
+<?php
+class Login extends Module{
+		
+	public function init(){
+		if($this->session->ouverte())
+			$this->tpl->assign('login',$this->session->user->login);
+	}
+
+	public function action_index(){
+	
+		
+
+		$this->set_title("module Connexion");		
+		$f=new Form("?module=login&action=valide","f_log");	//Creation du formulaire
+		$f->add_text("log","log","Login");		
+		$f->add_password("mdp","mdp","Mot de passe");		
+		
+			
+		$f->add_submit("Valider","valLog")->set_value('Valider');		
+
+		$this->tpl->assign("f_log",$f);	
+		$this->session->form = $f;//utilité?
+		
+	
+
+		// A FAIRE
+		// vérifier les données de connexion
+		//charger le membre
+		//$user=Membre::chercherParId(/*mettre l'id*/);
+		//$this->session->ouvrir($user);
+		
+		//code de demo
+		/*$m=new Membre($this->req->post("Login"),"Exemple");
+		$this->session->user=$m;		
+		$this->tpl->assign('login',$m->login);
+		$this->site->ajouter_message("Vous êtes connecté en tant que ".$m->login);
+		Site::redirect("index");*/
+	}
+
+	public function action_valide()
+	{
+		
+			//connexion a passer en static? faut il le faire pour les autres?? --> Faut-il faire htmlspecialschars et cie?
+			
+			// $db= new PDO("mysql:host=localhost;dbname=basec5","root","");
+			
+			
+			$cm= new ClientManager(DB::get_instance());
+			$a=$cm->connexion($this->req->log,$this->req->mdp);
+			// req fait réference à l'instance de request ( variable passé en $_POST )
+			if($a){
+				$this->tpl->assign('login',$a->getMail());
+				$this->tpl->assign('nom',$a->getNom());
+				$this->session->ouvrir($this->req->log);
+			}
+			else
+			{
+				$this->site->ajouter_message("Login ou mot de passe incorect");
+				Site::redirect("login");
+			}
+			
+		
+		
+		// $this->site->ajouter_message($this->req->log);
+		// $this->site->ajouter_message("Le formulaire est validé");
+	}
+	
+	public function action_deconnect(){		
+		$this->site->ajouter_message('Vous êtes déconnecté');							
+		$this->session->fermer(); 			
+		$this->site->redirect("index");
+	}
+	
+	public function action_logadmin()
+	{
+		
+	
+		
+		
+		$this->set_title("Connexion Administrateur");	
+		if(isset($this->session->formlogadm))
+		{
+					$f=$this->session->formlogadm;
+					$f->populate();
+					
+		}
+		else
+		{	$f=new Form("?module=login&action=validelogadm","f_log");	//Creation du formulaire
+			$f->add_text("log","log","Login");		
+			$f->add_password("mdp","mdp","Mot de passe");		
+			
+				
+			$f->add_submit("Valider","valLog")->set_value('Valider');		
+		}
+
+			$this->tpl->assign("f_logadm",$f);	
+			$this->session->formlogadm = $f;//utilité?
+	
+	}
+	
+	public function action_validelogadm()
+	{
+		if(($this->req->log) AND ($this->req->mdp))
+		{
+		
+			if($this->req->log!='admin')
+			{	
+				
+					$f=$this->session->formlogadm;
+					$f->populate();
+					$this->session->formlogadm=$f;
+					$this->site->ajouter_message("Login ou mot de passe incorrect");
+					Site::redirect('login','logadmin');
+			}
+			else
+			{
+				$am= new AdminManager(DB::get_instance());
+				$adm=$am->connexion($this->req->mdp);
+				if($adm)
+				{
+					$this->session->ouvrir('admin');
+					$this->site->ajouter_message("Bienvenue maître");
+					unset($this->session->formlogadm);
+					Site::redirect('index');
+				}
+				else
+				{
+					$f=$this->session->formlogadm;
+					$f->populate();
+					$this->session->formlogadm=$f;
+					$this->site->ajouter_message("Login ou mot de passe incorrect");
+					Site::redirect('login','logadmin');
+				}
+			
+			}
+			
+			
+			
+			
+		
+		}
+		else
+		{
+			$this->site->ajouter_message("Login ou mot de passe non renseigné");
+			Site::redirect("login","logadm");
+		}
+	}
+
+}
+?>

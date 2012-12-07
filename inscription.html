@@ -1,0 +1,61 @@
+<html>
+	<head>
+	
+
+	<link rel="stylesheet" href="./formIns.css"/>
+	</head>
+	
+<body>
+	<div> bob <p> pierre</p>michel <p>jean</p></div>
+		<form action="valInscription.php" method="post" enctype="text/palin" id="f_ins" name="f_ins">
+		<fieldset>
+			<legend>Inscription</legend>
+			
+				<label for="nom">Nom</label><input type="text" id="nom" name="nom" /><span id="nom_e"></span>
+				<label for="prenom">Prénom</label><input type="text" id="prenom" name="prenom" /><span id="prenom_e"></span>
+				<label for="rue">Rue</label><input type="text" id="rue" name="rue" /><span id="rue_e"></span>
+				<label for="CP">Code Postal</label><input type="text" name="CP" id="CP"/><span id="CP_e"></span>
+				<label for="ville">Ville</label><input type="text" name="ville" id="ville"/><span id="ville_e"></span>		
+				<label for="mail">Mail</label><input type="email" name="mail" id="mail"/><span id="mail_e"></span>		
+				<label for="mdp">Mot de passe</label><input type="password" name="mdp" id="mdp"/><span id="mdp_e"></span>		
+				<label for="mdp2">Confirmation</label><input type="password" name="mdp2" id="mdp2"/><span id="mdp2_e"></span>		
+			<input type="reset" value="Reinitialiser" id="action"/>
+			<input type="submit" value="Envoyer" id="action2"/>
+			
+		</fieldset>
+		</form>
+
+<script src="./Lib/jquery_min.js"></script>
+<script>
+$(function(){
+	
+	$("#action2").click(function(){
+		
+		
+	});
+	
+	$("#nom").blur(function vNom(e){
+		
+		
+		if(/[0-9]/.test($("#nom").val()))
+		{
+			$("#nom_e").html("Le champ Nom contient un ou plusieurs chiffres!");
+			$("#nom_e").show("slow");
+			return false;
+		}else $("#nom_e").hide("slow");
+		if($("#nom").val().length>100) 
+		{	
+			$("#nom_e").html("Le champ Nom est trop grand ( Max: 100 caractères)");
+			$("#nom_e").show("slow");
+			return false;
+		}
+		else $("#nom_e").hide("slow");
+		return true;
+	});
+	 
+
+
+})
+</script>
+</body>
+</html>

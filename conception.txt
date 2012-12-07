@@ -1,0 +1,61 @@
+
+	Sujet : Site de location de voitures de luxe.
+	
+	Contenu:
+	-Espace membre / VIP
+	-Commentaire sous chaque page de location. (ex : bonne voiture etc).
+	-Plan ( géolocalisation ) des site de locations.
+	-Bandeau de connexion en haut ( ou block en haut a gauche).
+	-Menu bandeau ( /***********/ /**********/ /**********/ ...)
+	-Points de fidélité ( plus de points si VIP )
+	-VIP au bout de x locations.
+	-Partie ventes de certain véhicule (km > 100 000) possibilité de location/vente. = test pendant  1 semaine puis achat ou non.
+	-Système de notation
+	
+	Base de données:
+		Table :
+			
+			->Table commentaire(id, voiture, auteur, date, contenu, note).
+			->Table car(id, marque, modèle, année, km, prix(par jour), qteStock, QteDispo, location) 
+				une voiture est disponible en x quantité sur un site ( location )
+				 EX:
+					2-renault-clio-2005-20000-100-10-6-Amiens
+					8-renault-clio-2007-27800-110-4-0-Beauvais
+				Quand qteDispo est a 0 la voiture n'est pas disponible.
+				Pour chaque location il faut indiquer une date de rendu ( heure et jour) correcte.
+				Horaire : lundi-vendredi: 9h-18h/ samedi 10h-19h / dimanche 10h-16h.
+				Chaque retour devra être éffectuer a l'heure de fermeture-2heures maximum pour vérification -lavage - mise à jour des km/dispo 2heures après.
+			
+			->Table rent(idRent, #idclient, #idvoiture, dateLoc, dateRendu).//Peut etre mettre un variable rendu qui passe a un quand la voiture est rendu. On ne supprime pas l'enregistrement pour gérer un historique.
+			->Table client(idclient, nom, prenom, pseudo, adresse, vip(0 non 1 oui), dateInscription, dateFirstRent).
+			
+			Quand une voiture a atteint 100 000 km elle peut être mise en vente.
+			Pour ce faire on décrémente QteStock ET QteDispo .Quand QteStock ==0 on supprime l'enregistrement de la table.
+			Un rabais sur la vente est éffectué au client VIP.
+			
+			___________________________[Exemple page de presentation voiture]________________________________________
+			|																					[Connexion]			|
+			|										NOM SOCIETE									[connecté X]		|
+			|______________________________________________________________________________________________________	|
+			|				|						MENU										  |					|
+			|				|_____________________________________________________________________|					|
+			|						(en gras)Porsche 911															|
+			|																										|
+			|																										|
+			|		{												}			___________________________			|
+			|																	|						   |		|
+			|						Description									|						   |		|
+			|																	|						   |		|
+			|						prix etc									|	PHOTO VOITURE			|		|
+			|																	|							|		|
+			|																	|							|		|
+			|																	|__________________________|		|
+			|		{												}												|
+			|		Note:(1/5étoiles)																				|
+			|		____________________________																	|
+			|		|							|																	|
+			|		|		COMMENTAIRES		|						'-Miniature1'-Miniature2'-...				|
+			|		|___________________________|																	|
+			|																										|
+			|_______________________________________________________________________________________________________|
+			
