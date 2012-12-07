@@ -89,6 +89,7 @@
 	
 	</style>
 	<link rel='stylesheet' href='styles/smoothness/jquery-ui-1.8.5.custom.css' />
+	<link rel="icon" type="image/png" href="./images/favicon.ico" />
 	</head>
 	<body>
 	<div id='page'>

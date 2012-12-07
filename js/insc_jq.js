@@ -24,10 +24,19 @@
 	
 		if($(this).val().length>=50)
 		{
-			$(this).after("<span class=\"error\"> Le nom doit être inférieur à 20 caractères</span>");
-			alert('test gh');
+			$(this).after("<span class=\"error\"> La rue doit être inférieur à 50 caractères</span>");
+			
 		}
 	
+	});
+	
+	$("#cp").blur(function(){
+	
+		
+		
+		if(!(/^[0-9]{5}$/.test($(this).val()))) 
+			$(this).after("<span class=\"error\"> Code postal incorrect format XXXXX</span>");
+		
 	});
 
 });

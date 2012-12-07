@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2012-12-04 14:18:16
+<?php /* Smarty version Smarty-3.1.1, created on 2012-12-07 17:06:08
          compiled from "templates\main.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3023950be050517c341-08230662%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6aae8c641d21506c83b2eef3095b796e7ec90482' => 
     array (
       0 => 'templates\\main.tpl',
-      1 => 1354630693,
+      1 => 1354899964,
       2 => 'file',
     ),
   ),
@@ -121,6 +121,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	
 	</style>
 	<link rel='stylesheet' href='styles/smoothness/jquery-ui-1.8.5.custom.css' />
+	<link rel="icon" type="image/png" href="./images/favicon.ico" />
 	</head>
 	<body>
 	<div id='page'>
