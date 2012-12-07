@@ -29,7 +29,7 @@ create table modele(
 	
 create table voiture(
 	idVoiture int(3) primary key AUTO_INCREMENT,
-	annee year,
+	année year,
 	km int(6),
 	description text,
 	idModele int(3),
@@ -60,6 +60,11 @@ create table location(
 
 create table image(
 	idImage varchar(13) primary key,
-	idVoiture int(3),
-	constraint csci FOREIGN KEY (idVoiture) references voiture(idVoiture)
+	idModele int(3),
+	constraint csci FOREIGN KEY (idModele) references modele(idModele)
+	)engine=innodb;
+	
+create table admin(
+	idAdm int(3) auto increment,
+	mdpAdm varchar(33)
 	)engine=innodb;
