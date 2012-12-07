@@ -29,7 +29,7 @@ create table modele(
 	
 create table voiture(
 	idVoiture int(3) primary key AUTO_INCREMENT,
-	année year,
+	annee year,
 	km int(6),
 	description text,
 	idModele int(3),
