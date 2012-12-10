@@ -15,20 +15,30 @@
 	 
 		public function action_index()
 		{
-			$this->set_title("Module Inscription");		
-			$f=new Form("?module=inscription&action=valide","f_ins");	//Creation du formulaire
-			$f->add_text("nom","nom","Nom");
-			$f->add_text("prenom","prenom","Prénom");
-			$f->add_text("rue","rue","Rue");
-			$f->add_text("cp","cp","Code postal");
-			$f->add_text("ville","ville","Ville");
-			$f->add_text("mail","mail","Mail");
-			$f->add_password("mdp","mdp","Mot de passe");
-			$f->add_password("mdp2","mdp2","Confirmation");
-			$f->add_submit("Valider","valIns")->set_value("Valider");
+			$this->set_title("Module Inscription");	
+			if(isset($this->session->formIns))
+			{
+				$f=$this->session->formIns;
+					$f->populate();
+					
+			}
+			else
+			{
+				$f=new Form("?module=inscription&action=valide","f_ins");	//Creation du formulaire
+				$f->add_text("nom","nom","Nom");
+				$f->add_text("prenom","prenom","Prénom");
+				$f->add_text("rue","rue","Rue");
+				$f->add_text("cp","cp","Code postal");
+				$f->add_text("ville","ville","Ville");
+				$f->add_text("mail","mail","Mail");
+				$f->add_password("mdp","mdp","Mot de passe");
+				$f->add_password("mdp2","mdp2","Confirmation");
+				$f->add_submit("Valider","valIns")->set_value("Valider");
+								
+			}
+			$this->session->formIns=$f ;
 			$this->tpl->assign("f_ins",$f);
 			
-			$this->session->formIns = $f;//utilité?
 			
 		}
 		
@@ -70,13 +80,20 @@
 				
 				// $this->tpl->assign("tab_errors",$errors);
 				$f=$this->session->formIns;
-				$f->populate();
-				$this->tpl->assign("f_ins",$f);
+				
+					$f->populate();
+					$this->session->formIns=$f;
+				// $f->populate();
+				// $this->tpl->assign("f_ins",$f);
 				
 				foreach($errors as $err)
 				{
 					$this->site->ajouter_message("-".$err);
 				}
+				
+					
+				
+				Site::redirect("inscription");
 				 
 			}
 			else

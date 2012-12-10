@@ -3,7 +3,7 @@
 	var nom=false;
 	$("#nom").blur(function(){
 	
-		if($(this).val().length>=20)
+		if($(this).val().length>=20) 
 		{
 			if(!nom)
 			{
@@ -11,6 +11,15 @@
 				nom=true;
 			}
 	
+		}
+		else if  ($(this).val().length==0)
+		{
+			if(!nom)
+			{
+				$(this).after("<span class=\"error\"> Le Champs nom n'est pas rempli</span>");
+				nom=true;
+			}
+		
 		}
 		else
 		{
@@ -80,5 +89,7 @@
 		}
 		
 	});
+	
+	
 
 });
