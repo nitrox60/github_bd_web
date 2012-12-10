@@ -35,7 +35,7 @@
 		}
 		
 		public function setIdImage($image){
-			$image=(int)$image;
+			$image=$image;
 			$this->_idImage=$image;
 		}
 	}
