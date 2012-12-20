@@ -39,9 +39,9 @@
 			$q=$this->_db->query("SELECT * FROM client");
 			while($rep=$q->fetch(PDO::FETCH_ASSOC))
 			{
-				echo "$rep[idClient] -- $rep[nom] -- $rep[prenom] -- $rep[rue] -- $rep[codePostal] -- $rep[ville] <br /> $rep[vip] -- $rep[dateInscription] -- -- $rep[mail] -- $rep[mdp]<br /><br />";
+				$tab[]=new Client($rep);
 			}
-		
+			return $tab;		
 		}
 		
 		 public function delete(Client $clt)
@@ -52,15 +52,13 @@
 
 		  public function get($id)
 		  {
-			if(is_int($id))
-			{
+			
 				$req=$this->_db->prepare("SELECT * FROM client WHERE idClient=:id");
 				$req->execute(array(":id"=>$id));
 				$rep=$req->fetch(PDO::FETCH_ASSOC);
 				if($rep)return new Client($rep);
 				else return null;
-			}
-			else return null;
+			
 		  }
 		  
 		  public function connexion($log, $mdp)
@@ -89,8 +87,6 @@
 			if($rep) return true;
 			else return false;
 		  }
-
-		
 // A voir ce qu'un client peut modifier sur son compte ( mail, mdp rue etc)
 		  // public function update(Client $clt)
 		  // {
