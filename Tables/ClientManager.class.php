@@ -24,9 +24,9 @@
 									":mail" => $clt->getMail(),
 									":mdp" => $clt->getMdp()								
 				));
-				echo "add";
+				
 			}
-			else echo "conditions non validées. voir trigger_error";
+			
 		}
 	
 		public function setDb($db){
@@ -87,13 +87,24 @@
 			if($rep) return true;
 			else return false;
 		  }
-// A voir ce qu'un client peut modifier sur son compte ( mail, mdp rue etc)
-		  // public function update(Client $clt)
-		  // {
-			// $req=$this->_db->prepare("UPDATE client SET  WHERE idClt=:id");
-			// $req->execute(array("" => ,
-								// ":id" => $com->getIdCom()));
-		  // }
+
+		  public function update(Client $clt)
+		  {
+			$req=$this->_db->prepare("UPDATE client SET nom=:nom, prenom=:prenom, rue=:rue, codePostal=:cp, ville=:ville, vip=:vip, dateInscription=:dateIns,  mail=:mail WHERE idClient=:id");
+			
+				
+				$req->execute(array(":nom" => $clt->getNom(),
+									":prenom" => $clt->getPrenom(),
+									":rue" => $clt->getRue(),
+									":cp" => $clt->getCodePostal(),
+									":ville" => $clt->getVille(),
+									":vip" => $clt->getVip(),
+									":dateIns" => $clt->getDateInscription(),
+									":mail" => $clt->getMail()	,
+									":id" => $clt->getIdClient()
+				));
+			
+		  }
 	
 	
 	

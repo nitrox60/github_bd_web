@@ -13,13 +13,42 @@
 		body{
 			background:	-webkit-gradient(linear, left top, left bottom, from(#A5AA95), to(#6F7364));
 		}
-
+/*Code Css pour les boutons---- */
 		#menu{
-			background:black;
-			height:14pt;	
+			background:#565656;
+			height:30pt;	
 			padding:5px;
+			margin-top:5%;
+			padding-left:25%;
+			
 		}
-	
+		
+		#menu>a
+		{
+
+
+			
+			text-align:center;
+			border-radius:8px 8px 8px;
+			background: linear-gradient(#04BEED, #0383A3);
+			background: -webkit-linear-gradient(#04BEED, #0383A3);
+			background: -ms-linear-gradient(#04BEED, #0383A3);
+			background: -moz-linear-gradient(#04BEED, #0383A3);
+			background: -o-linear-gradient(#04BEED, #0383A3);
+			border:1px gray solid;
+			
+			padding:0 5  0 5;
+			text-decoration:none;
+			line-height:35pt;
+			color:white;
+		
+			
+
+
+		}
+		
+		
+/*---------------------	*/
 		
 		#login{
 			background:#333;
@@ -28,7 +57,23 @@
 			padding-left:5px;
 			margin-top:3px;
 			color:white;
+
 		}
+		#ifLog>a
+		{
+			text-align:center;
+			text-decoration: none;
+			color: black;
+			border : 1 px solid black;
+			border-radius: 6px 6px 6px ;
+			padding: 2px;
+			background: linear-gradient(#FF0004, #B20000);
+			background: -webkit-linear-gradient(#FF0004, #B20000);
+			background: -ms-linear-gradient(#FF0004, #B20000);
+			background: -moz-linear-gradient(#FF0004, #B20000);
+			background: -o-linear-gradient(#FF0004, #B20000);
+		}
+				
 		#page{
 			width:1000px;
 			margin:auto;	
@@ -79,28 +124,7 @@
 			color:white;
 		}
 		
-		#menu>a
-		{
-
-
-			
-			text-align:center;
-			border-radius:8px 8px 8px;
-			background: linear-gradient(#04BEED, #0383A3);
-			background: -webkit-linear-gradient(#04BEED, #0383A3);
-			background: -ms-linear-gradient(#04BEED, #0383A3);
-			background: -moz-linear-gradient(#04BEED, #0383A3);
-			background: -o-linear-gradient(#04BEED, #0383A3);
-			border:1px gray solid;
-			
-			padding:0 5  0 5;
-			text-decoration:none;
-			line-height:12pt;
-			color:white;
-			
-
-
-		}
+		
 	
 	</style>
 	<link rel='stylesheet' href='styles/smoothness/jquery-ui-1.8.5.custom.css' />
