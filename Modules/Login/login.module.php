@@ -77,7 +77,7 @@ class Login extends Module{
 	
 		
 		
-		$this->set_title("Connexion Administrateur");	
+		$this->set_title("Connexion Administrateur-- Login admin // mdp admin");	
 		if(isset($this->session->formlogadm))
 		{
 					$f=$this->session->formlogadm;
@@ -119,9 +119,9 @@ class Login extends Module{
 				if($adm)
 				{
 					$this->session->ouvrir('admin');
-					$this->site->ajouter_message("Bienvenue maître");
+					$this->site->ajouter_message("Bienvenue Admin");
 					unset($this->session->formlogadm);
-					Site::redirect('index');
+					Site::redirect('admSpace');
 				}
 				else
 				{

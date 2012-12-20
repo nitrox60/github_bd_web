@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2012-12-07 17:06:08
+<?php /* Smarty version Smarty-3.1.1, created on 2012-12-19 20:41:44
          compiled from "templates\main.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3023950be050517c341-08230662%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6aae8c641d21506c83b2eef3095b796e7ec90482' => 
     array (
       0 => 'templates\\main.tpl',
-      1 => 1354899964,
+      1 => 1355949700,
       2 => 'file',
     ),
   ),
@@ -136,7 +136,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			
 			<a href="?module=login">Login</a>
 			<a href="?module=inscription">Inscription</a>
-			<a href="?module=admMarque">Admin Marque</a>
+			<a href="?module=admSpace">Administration</a>
 			<a href="?module=loc">Location</a>
 			<span id="ifLog">
 			<?php if ((isset($_smarty_tpl->tpl_vars['login']->value))){?>

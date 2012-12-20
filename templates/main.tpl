@@ -103,7 +103,7 @@
 			
 			<a href="?module=login">Login</a>
 			<a href="?module=inscription">Inscription</a>
-			<a href="?module=admMarque">Admin Marque</a>
+			<a href="?module=admSpace">Administration</a>
 			<a href="?module=loc">Location</a>
 			<span id="ifLog">
 			{if (isset($login))}
