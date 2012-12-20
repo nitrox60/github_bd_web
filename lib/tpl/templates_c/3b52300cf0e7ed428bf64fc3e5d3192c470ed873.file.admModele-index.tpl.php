@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2012-12-19 20:40:13
+<?php /* Smarty version Smarty-3.1.1, created on 2012-12-20 10:22:55
          compiled from "modules\admModele\tpl\admModele-index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2861250c5ddd1444d04-49187198%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3b52300cf0e7ed428bf64fc3e5d3192c470ed873' => 
     array (
       0 => 'modules\\admModele\\tpl\\admModele-index.tpl',
-      1 => 1355949610,
+      1 => 1355998971,
       2 => 'file',
     ),
   ),
@@ -109,7 +109,7 @@ th, td
 	display:none;
 }
 
-h2
+#mq
 {
 
 	margin-left:30%;
@@ -122,6 +122,8 @@ h2
 	background: -ms-linear-gradient(#04BEED, #0383A3);
 	background: -moz-linear-gradient(#04BEED, #0383A3);
 	background: -o-linear-gradient(#04BEED, #0383A3);
+	font-size:30px;
+	font-weight: bold;
 
 }
 
@@ -141,9 +143,11 @@ h2
 	background: -o-linear-gradient(#FF0004, #B20000);
 }
 
+
+
 </style>
-<h2>Administration <span id="mq"><?php echo $_smarty_tpl->tpl_vars['marque']->value->getNomMarque();?>
-</span></h2>
+<div id="mq"><?php echo $_smarty_tpl->tpl_vars['marque']->value->getNomMarque();?>
+</div>
 
 Info : Clique sur le nom du modèle pour voir les voitures et pour acceder a la suppresion
 <div class="button_add button"><a href="?module=admModele&action=add&op=add&id=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>

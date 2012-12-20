@@ -81,7 +81,7 @@ th, td
 	display:none;
 }
 
-h2
+#mq
 {
 
 	margin-left:30%;
@@ -94,6 +94,8 @@ h2
 	background: -ms-linear-gradient(#04BEED, #0383A3);
 	background: -moz-linear-gradient(#04BEED, #0383A3);
 	background: -o-linear-gradient(#04BEED, #0383A3);
+	font-size:30px;
+	font-weight: bold;
 
 }
 
@@ -113,8 +115,10 @@ h2
 	background: -o-linear-gradient(#FF0004, #B20000);
 }
 
+
+
 </style>
-<h2>Administration <span id="mq">{$marque->getNomMarque()}</span></h2>
+<div id="mq">{$marque->getNomMarque()}</div>
 
 Info : Clique sur le nom du modèle pour voir les voitures et pour acceder a la suppresion
 <div class="button_add button"><a href="?module=admModele&action=add&op=add&id={$id}">Ajouter</a></div>

@@ -77,7 +77,8 @@ class Login extends Module{
 	
 		
 		
-		$this->set_title("Connexion Administrateur-- Login admin // mdp admin");	
+		$this->set_title("Connexion Administrateur");	
+		$this->site->ajouter_message("<span style=\"text-decoration: line-through;\">Login : admin // mdp : admin</span>");
 		if(isset($this->session->formlogadm))
 		{
 					$f=$this->session->formlogadm;
