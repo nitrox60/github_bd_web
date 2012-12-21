@@ -129,7 +129,7 @@
 		
 		public function action_delete()
 		{
-		$db=DB::get_instance();
+			$db=DB::get_instance();
 			$mm=new ModeleManager($db);
 			$vm=new VoitureManager($db);
 			$mod=$mm->get($this->req->id);
@@ -201,5 +201,56 @@
 				$this->site->ajouter_message("upload réussi !");
 				Site::redirect("index");
 			}
+		}
+		
+		public function action_ajax()
+		{
+			
+			if(($this->req->id) AND ($this->req->what))
+			{	
+				$what=$this->req->what;
+				if(($what=="nomModele") OR ($what=="prix") Or ($what=="tauxRemise"))
+				{
+					$new= $this->req->mod;
+					if($what=="nomModele")
+					{
+						$mm=new ModeleManager(DB::get_instance());
+						if($mm->exist($new))$err[]="Le nom du modèle ".$this->req->nomModele ." existe déjà";
+						else if(strlen($new)==0) $err[]="Le nom du modèle n'est pas renseigné";
+						else if(preg_match(self::VAL_REG,$new))$err[]="Le champs nom  modèle est mal renseigné";
+					}
+					else if($what=="prix")
+					{
+						if (($new<=0) OR ($new>=100000)) $err[]="Le prix journalier doit être compris entre 0 exclus et 100 000 exclus";
+					}
+					else if($what=="tauxRemise")
+					{
+						if(strlen($new)==0)$err[]="Le taux de remise n'est pas renseigné";
+						else if (($new>=100) OR ($new<0)) $err[]="Le taux de remise doit être compris entre 0 inclus et 100 exclus. (C'est un pourcentage)";
+					}
+					
+					if(!isset($err[0]))
+					{
+						$this->site->ajouter_message("pas d'erreur");
+						$mm=new ModeleManager(DB::get_instance());
+						$mod=$mm->get($this->req->id);
+						if($mod)
+						{
+							$method = 'set'.ucfirst($what);
+							$mod->$method($new);
+							$mm->update($mod);
+							echo json_encode("ok");
+							exit;	
+						}
+						else exit;
+					}
+					else 
+					{
+						echo json_encode($err);
+						exit;
+					}
+				} else exit;
+			} 
+			else exit;
 		}
 	}
