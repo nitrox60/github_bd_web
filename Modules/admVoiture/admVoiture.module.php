@@ -61,11 +61,16 @@
 		}
 		public function action_delete()
 		{
-			$vm=new VoitureManager(DB::get_instance());
-			$v=$vm->get($this->req->id);
+			$db=DB::get_instance();
+			$vm= new VoitureManager($db);
+			$modm= new ModeleManager($db);
+			$v=$vm->get($this->req->idVoiture);
+			$mod=$modm->get($this->req->idModele);
+			$mod->setQteStock($mod->getQteStock()-1);
+			$modm->update($mod);
 			$vm->delete($v);
 			$this->site->ajouter_message("voiture supprimé!");
-			Site::redirect("admMarque");
+			Site::redirect("index");
 		}
 		public function action_ajax()
 		{
