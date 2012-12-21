@@ -59,7 +59,14 @@
 			
 			}
 		}
-		
+		public function action_delete()
+		{
+			$vm=new VoitureManager(DB::get_instance());
+			$v=$vm->get($this->req->id);
+			$vm->delete($v);
+			$this->site->ajouter_message("voiture supprimé!");
+			Site::redirect("admMarque");
+		}
 		public function action_ajax()
 		{
 		
@@ -71,9 +78,10 @@
 				$tab=array();
 				foreach($liste as $car)
 				{
+					$tab[$i]['idVoiture']=$car->getIdVoiture();
 					$tab[$i]['annee']=$car->getAnnee();
-					 $tab[$i]['km']=$car->getKm();
-					 $tab[$i]['description']=$car->getDescription();
+					$tab[$i]['km']=$car->getKm();
+					$tab[$i]['description']=$car->getDescription();
 					$i=$i+1;
 				}
 				echo json_encode($tab);
@@ -81,7 +89,6 @@
 			
 			}
 			else Site::redirect('index');
-		
 		}
 	
 	}

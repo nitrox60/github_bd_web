@@ -57,14 +57,10 @@
 
 		  public function get($id)
 		  {
-			if(is_int($id))
-			{
-				$req=$this->_db->prepare("SELECT * FROM voiture WHERE idVoiture=:id");
-				$req->execute(array(":id"=>$id));
-				$rep=$req->fetch(PDO::FETCH_ASSOC);
-				if($rep) return new Voiture($rep);
-				else return null;
-			}
+			$req=$this->_db->prepare("SELECT * FROM voiture WHERE idVoiture=:id");
+			$req->execute(array(":id"=>$id));
+			$rep=$req->fetch(PDO::FETCH_ASSOC);
+			if($rep) return new Voiture($rep);
 			else return null;
 		  }
 

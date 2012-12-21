@@ -171,7 +171,7 @@ Info : Cliquez sur le nom du modèle pour voir les voitures et pour acceder a le
 							var marq=[];
 							for(i=0;i<data.length;i++)
 							{
-								$('.ajax').html($('.ajax').html()+"<br /> Année : "+data[i]['annee']+"<br />Kilométrage :"+data[i]['km']+"<br />Description :"+data[i]['description']+"<br /><div class=\"sup_car button\" id="+i+">Supprimer</div>").show();
+								$('.ajax').html($('.ajax').html()+"<br />Année : "+data[i]['annee']+"<br />Kilométrage :"+data[i]['km']+"<br />Description :"+data[i]['description']+"<br /><div class=\"sup_car button\" id="+i+"><a href=\"?module=admVoiture&action=delete&id="+data[i]['idVoiture']+"\" >Supprimer</a></div>").show();
 								//prompt+="<br /> Année : "+data[i]['annee']+"<br />Kilométrage :"+data[i]['km']+"<br />Description :"+data[i]['description']+"<br /><div class=\"sup_car\">Supprimer</div>";
 							//On stock les informations concernant l'objet en cour d'affichage
 								marq[i]=$('#mq').text();
