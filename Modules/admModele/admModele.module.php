@@ -2,6 +2,8 @@
 	class AdmModele extends Module{
 	
 	const VAL_REG="/[^a-zA-Z0-9 ]/";
+	const NUM_REG='/^\d{1,2}$|(?=^.{1,5}$)^\d{1,2}+\.\d{1,2}$/'; //Soit on a 2chiffres ou une chaine de 5 caractères composée de 
+																 // 1 a 2 chiffres puis un point puis 1 a 2 chiffres
 	
 		public function action_index()
 		{
@@ -32,7 +34,6 @@
 					$prix=$mod->getPrix();
 					$tx=$mod->getTauxRemise();
 					$f->add_hidden("idmod","idmod","idmod")->set_value($this->req->idmod);
-					
 				}
 				else
 				{
@@ -67,12 +68,13 @@
 				if(strlen($this->req->nomModele)==0)$errors[]="Le nom du modèle n'est pas renseigné";
 				else if(preg_match(self::VAL_REG,$this->req->nomModele))$errors[]="Le champs nom  modèle est mal renseigné";
 			}
-			// if(strlen($this->req->qteStock)==0)$errors[]="La quantité en stock est non renseignée";
-			// else if(($this->req->qteStock<0) OR($this->req->qteStock>=100)) $errors[]="La quantité en stock doit être comprise entre 0 inclus et 100 exclus";
+			
 			if ( ($this->req->prix<=0) OR ($this->req->prix>=100000)) $errors[]="Le prix journalier doit être compris entre 0 exclus et 100 000 exclus";
 		
 			if(strlen($this->req->tauxRemise)==0)$errors[]="Le taux de remise n'est pas renseigné";
-			else if (  ($this->req->tauxRemise>=100) OR ($this->req->tauxRemise<0) ) $errors[]="Le taux de remise doit être compris entre 0 inclus et 100 exclus. (C'est un pourcentage)";
+			if (($this->req->tauxRemise>=100) OR ($this->req->tauxRemise<0)) $errors[]="Le taux de remise doit être compris entre 0 inclus et 100 exclus. (C'est un pourcentage)";
+			if(!preg_match(self::NUM_REG,$this->req->tauxRemise))	$errors[]="Le taux est mal renseigné";
+			
 			if(isset($errors[0]))
 			{
 				foreach($errors as $err)
@@ -198,14 +200,15 @@
 				$imgM->add($image); 
 				$this->site->ajouter_message($img['idImage']);
 				$this->site->ajouter_message($this->req->id);
-				$this->site->ajouter_message("upload réussi !");
+				$this->site->ajouter_message("upload réussi");
+				//il faudra penser à redimensionner la photo
 				Site::redirect("index");
 			}
 		}
 		
 		public function action_ajax()
 		{
-			
+			// Pour faire modif en direct sans changer de page
 			if(($this->req->id) AND ($this->req->what))
 			{	
 				$what=$this->req->what;
@@ -226,12 +229,12 @@
 					else if($what=="tauxRemise")
 					{
 						if(strlen($new)==0)$err[]="Le taux de remise n'est pas renseigné";
-						else if (($new>=100) OR ($new<0)) $err[]="Le taux de remise doit être compris entre 0 inclus et 100 exclus. (C'est un pourcentage)";
+						if (($new>=100) OR ($new<0)) $err[]="Le taux de remise doit être compris entre 0 inclus et 100 exclus. (C'est un pourcentage)";
+						if(!preg_match(self::NUM_REG,$new))	$err[]="Le taux est mal renseigné";
 					}
 					
 					if(!isset($err[0]))
 					{
-						$this->site->ajouter_message("pas d'erreur");
 						$mm=new ModeleManager(DB::get_instance());
 						$mod=$mm->get($this->req->id);
 						if($mod)

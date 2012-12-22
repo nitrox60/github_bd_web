@@ -1,5 +1,0 @@
-marque/modele et leur manageur
-
-dossier admMarque et admModele
-
-3 images

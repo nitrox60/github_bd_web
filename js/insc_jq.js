@@ -146,11 +146,11 @@
 	
 		
 		
-		if($(this).val().length>=30)
+		if($(this).val().length>=19)
 		{
 			if(!mdp)
 			{
-				$(this).after("<span class=\"error\"> Le mot de passe doit être inférieur à 18 caractères</span>");
+				$(this).after("<span class=\"error\"> La taille du mot de passe doit être inférieur à 18 caractères</span>");
 				mdp=true;
 			}
 			
@@ -159,7 +159,7 @@
 		{
 			if(!mdp)
 			{
-				$(this).after("<span class=\"error\"> Le mot de passe doit être supérieur a 8 caractères</span>");
+				$(this).after("<span class=\"error\"> La taille du mot de passe doit être supérieur a 8 caractères</span>");
 				mdp=true;
 			}
 		

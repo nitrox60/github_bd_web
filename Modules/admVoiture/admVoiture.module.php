@@ -4,15 +4,13 @@
 		public function action_index()
 		{
 			$this->set_title("Module Admin ");
-				$f=new Form("?module=admVoiture&action=valide&id=".$this->req->id,"f_add");
-				$f->add_text("annee","annee","Année");
-				$f->add_text("km","km","Kilométrage");
-				$f->add_textarea("des","des","Description");
-				$f->add_submit("valide","valide")->set_value("Valider");
-				$this->tpl->assign("f_add",$f);
-				$this->session->f_add=$f;
-				
-		
+			$f=new Form("?module=admVoiture&action=valide&id=".$this->req->id,"f_add");
+			$f->add_text("annee","annee","Année");
+			$f->add_text("km","km","Kilométrage");
+			$f->add_textarea("des","des","Description");
+			$f->add_submit("valide","valide")->set_value("Valider");
+			$this->tpl->assign("f_add",$f);
+			$this->session->f_add=$f;
 		}
 		
 		public function action_valide()
@@ -42,7 +40,7 @@
 						$vm= new VoitureManager($db);
 						$modm= new ModeleManager($db);
 						$mod=$modm->get($this->req->id);
-						$mod->setQteStock($mod->getQteStock()+1);
+						$mod->setQteStock($mod->getQteStock()+1); // Quand on ajoute une voiture le stock est incrémmenté
 						$modm->update($mod);
 						$car['annee']=$this->req->annee;
 						$car['km']=$this->req->km;
@@ -66,15 +64,15 @@
 			$modm= new ModeleManager($db);
 			$v=$vm->get($this->req->idVoiture);
 			$mod=$modm->get($this->req->idModele);
-			$mod->setQteStock($mod->getQteStock()-1);
+			$mod->setQteStock($mod->getQteStock()-1); // Quand on supprime une voiture le stock est décrémmenté
 			$modm->update($mod);
 			$vm->delete($v);
 			$this->site->ajouter_message("voiture supprimé!");
-			Site::redirect("index");
+			Site::redirect("admMarque");
 		}
 		public function action_ajax()
 		{
-		
+			// Pour afficher les voitures quand on clique sur un modèle
 			if($this->req->id)
 			{
 				$vm=new VoitureManager(DB::get_instance());

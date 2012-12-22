@@ -1,7 +1,6 @@
 ﻿<?php
 
 	class AdmMarque extends Module{
-		// const VAL_REG="/[^a-zA-Z ]/";
 		const VAL_REG="/^[a-zA-Z]{1}/";
 	
 		public function action_index()
@@ -12,19 +11,6 @@
 			$this->set_title("Module Admin ");	
 		
 		}
-	
-		// public function action_update()
-		// {
-			// $this->set_title("Module Admin Update");	
-			// $f=new Form("?module=admMarque&action=valide&type=update","f_update");
-			// $f->add_text("marque","marque","Marque");
-			// $f->add_hidden("id","id","Id")->set_value($this->req->id);
-			// $f->add_submit("Valider","val_up")->set_value("Valider");
-			
-			// $this->tpl->assign("f_update",$f);
-			
-			// $this->session->formUp = $f;
-		// }
 		
 		public function action_add()
 		{
@@ -98,12 +84,7 @@
 					$this->site->ajouter_message("Ajouté!");
 					Site::redirect("admMarque");
 				}
-				
-				
-				
 			}
-		
-		
 		}
-	
 	}
+?>

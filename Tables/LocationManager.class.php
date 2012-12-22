@@ -73,16 +73,4 @@
 			}
 			else return null;
 		  }
-
-		
-// A voir ce qu'on peut updater sur la location
-		  // public function update(Client $clt)
-		  // {
-			// $req=$this->_db->prepare("UPDATE client SET  WHERE idClt=:id");
-			// $req->execute(array("" => ,
-								// ":id" => $com->getIdCom()));
-		  // }
-	
-	
-	
 	}

@@ -19,7 +19,7 @@
 			$this->set_title("Module Inscription");	
 			
 			/** -- En cas de retour sur action_index() suite à des erreurs on remplie le formulaire avec l'ancienne saisie de l'utilisateur -- **/
-			//La saisie est sauvegarde jusqu'a ce qu'il reussise l'inscription : -S'il quitte la page et renviens les données sont conservées
+			//La saisie est sauvegarde jusqu'a ce qu'il reussise l'inscription : -S'il quitte la page et reviens les données sont conservées
 			if(isset($this->session->formIns))
 			{
 				$f=$this->session->formIns;

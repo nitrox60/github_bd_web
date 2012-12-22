@@ -39,30 +39,18 @@ class Login extends Module{
 
 	public function action_valide()
 	{
-		
-			//connexion a passer en static? faut il le faire pour les autres?? --> Faut-il faire htmlspecialschars et cie?
-			
-			// $db= new PDO("mysql:host=localhost;dbname=basec5","root","");
-			
-			
-			$cm= new ClientManager(DB::get_instance());
-			$a=$cm->connexion($this->req->log,$this->req->mdp);
-			// req fait réference à l'instance de request ( variable passé en $_POST )
-			if($a){
-				$this->tpl->assign('login',$a->getMail());
-				$this->tpl->assign('nom',$a->getNom());
-				$this->session->ouvrir($this->req->log);
-			}
-			else
-			{
-				$this->site->ajouter_message("Login ou mot de passe incorect");
-				Site::redirect("login");
-			}
-			
-		
-		
-		// $this->site->ajouter_message($this->req->log);
-		// $this->site->ajouter_message("Le formulaire est validé");
+		$cm= new ClientManager(DB::get_instance());
+		$a=$cm->connexion($this->req->log,$this->req->mdp);
+		if($a){
+			$this->tpl->assign('login',$a->getMail());
+			$this->tpl->assign('nom',$a->getNom());
+			$this->session->ouvrir($this->req->log);
+		}
+		else
+		{
+			$this->site->ajouter_message("Login ou mot de passe incorect");
+			Site::redirect("login");
+		}
 	}
 	
 	public function action_deconnect(){		
@@ -73,10 +61,6 @@ class Login extends Module{
 	
 	public function action_logadmin()
 	{
-		
-	
-		
-		
 		$this->set_title("Connexion Administrateur");	
 		$this->site->ajouter_message("<span style=\"text-decoration: line-through;\">Login : admin // mdp : admin</span>");
 		if(isset($this->session->formlogadm))
@@ -134,11 +118,6 @@ class Login extends Module{
 				}
 			
 			}
-			
-			
-			
-			
-		
 		}
 		else
 		{
@@ -146,6 +125,5 @@ class Login extends Module{
 			Site::redirect("login","logadm");
 		}
 	}
-
 }
 ?>

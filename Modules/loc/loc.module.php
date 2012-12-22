@@ -118,7 +118,7 @@
 					if($loch+6>$renduh) $this->site->ajouter_message("loc = rendu mais hloc>hrendu car durée minimal d'une location =6heure");
 					else if($loch==$renduh) $this->ajouter_message("Durée minimal d'une location = 6heures");
 				}
-				//pas encore au point completement.
+				//location pas encore completement au point
 				
 			}else $this->site->ajouter_message("date loc ou date rendu non renseigné");
 			Site::redirect("loc","rent&id=".$this->req->id);

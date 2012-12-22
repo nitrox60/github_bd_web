@@ -103,7 +103,4 @@
 					$this->_addable=false;
 				}
 		}
-		
-	
-
 }

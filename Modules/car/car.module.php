@@ -1,7 +1,7 @@
 <?php
 
 	class car extends Module{
-	
+		//Servira pour afficher nos voitures avec les photo
 		public function action_index()
 		{
 			$this->set_title("Module Nos voitures");

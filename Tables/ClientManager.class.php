@@ -52,13 +52,11 @@
 
 		  public function get($id)
 		  {
-			
-				$req=$this->_db->prepare("SELECT * FROM client WHERE idClient=:id");
-				$req->execute(array(":id"=>$id));
-				$rep=$req->fetch(PDO::FETCH_ASSOC);
-				if($rep)return new Client($rep);
-				else return null;
-			
+			$req=$this->_db->prepare("SELECT * FROM client WHERE idClient=:id");
+			$req->execute(array(":id"=>$id));
+			$rep=$req->fetch(PDO::FETCH_ASSOC);
+			if($rep)return new Client($rep);
+			else return null;
 		  }
 		  
 		  public function connexion($log, $mdp)
@@ -69,7 +67,7 @@
 			$req->execute(array(":log" => $log,
 								":mdp" => $mdpCrypt)
 								);
-				$rep=$req->fetch(PDO::FETCH_ASSOC);
+			$rep=$req->fetch(PDO::FETCH_ASSOC);
 			if($rep!=null)
 			{
 				
@@ -103,9 +101,5 @@
 									":mail" => $clt->getMail()	,
 									":id" => $clt->getIdClient()
 				));
-			
 		  }
-	
-	
-	
 	}

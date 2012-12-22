@@ -69,18 +69,4 @@
 			else return null;
 		  
 		  }
-		  
-		 
-
-		
-// A voir ce qu'un client peut modifier sur son compte ( mail, mdp rue etc)
-		  // public function update(Client $clt)
-		  // {
-			// $req=$this->_db->prepare("UPDATE client SET  WHERE idClt=:id");
-			// $req->execute(array("" => ,
-								// ":id" => $com->getIdCom()));
-		  // }
-	
-	
-	
 	}

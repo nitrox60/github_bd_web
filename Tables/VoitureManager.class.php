@@ -26,10 +26,6 @@
 			}
 			else echo "Les conditions d'ajouts ne sont pas validées! Voir trigger_error";
 		}
-	
-		
-		
-		
 		
 		public function listing($id){
 		
@@ -63,16 +59,4 @@
 			if($rep) return new Voiture($rep);
 			else return null;
 		  }
-
-		
-// A voir ce qu'on peut updater sur la voiture
-		  // public function update(Client $clt)
-		  // {
-			// $req=$this->_db->prepare("UPDATE client SET  WHERE idClt=:id");
-			// $req->execute(array("" => ,
-								// ":id" => $com->getIdCom()));
-		  // }
-	
-	
-	
 	}

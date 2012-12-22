@@ -83,7 +83,4 @@
 			$req->execute(array(":marque" => $m->getNomMarque(),
 								":id" => $m->getIdMarque()));
 		  }
-	
-	
-	
 	}

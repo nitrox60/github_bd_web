@@ -125,7 +125,6 @@
 			}
 		}
 		public function setMdp($mdp){ 
-			//tester mdp avec un regex .
 			if(is_string($mdp)){ $this->_mdp=md5($mdp);}
 			else{
 				trigger_error("le mdp n'est pas une string",E_USER_WARNING);

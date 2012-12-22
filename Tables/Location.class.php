@@ -91,9 +91,5 @@
 				trigger_error("la CS idClient ne peut pas etre null",E_USER_WARNING);
 				$this->_addable=false;
 			}
-		}
-			
-	
-	
-	
+		}	
 	}

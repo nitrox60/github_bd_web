@@ -68,7 +68,4 @@
 			$req->execute(array(":newContenu" => $com->getContenu(),
 								":id" => $com->getIdCom()));
 		  }
-	
-	
-	
 	}

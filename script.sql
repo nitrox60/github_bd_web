@@ -68,3 +68,5 @@ create table admin(
 	idAdm int(3) auto increment,
 	mdpAdm varchar(33)
 	)engine=innodb;
+
+INSERT INTO admin VALUES('','21232f297a57a5a743894a0e4a801fc3');
