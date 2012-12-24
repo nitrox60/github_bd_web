@@ -162,22 +162,29 @@
 		}
 		
 		public function action_validePhoto(){
-			$extensions = array(".png",".jpg",".jpeg",".bmp",".PNG",".JPG",".JPEG",".BMP");
+			$extensions = array("png","jpg","jpeg","bmp","PNG","JPG","JPEG","BMP");
 			$taille_max = 100000;
 			$dossier="images/";
 			$fichier=uniqid();
 			
-			$extension = strrchr($_FILES['photo']['name'], '.');
+			$extension = explode('.',$_FILES['photo']['name']);
+			$extension=strtolower($extension[count($extension)-1]);
 			if(!in_array($extension, $extensions))
 				$error[]="mauvaise extension";
 				
+			$taille = getimagesize($_FILES['photo']['tmp_name']);
+			$larg=300;
+			$reduc=($larg*100)/$taille[0];
+			$haut=($taille[1]*$reduc)/100;
+
+			$this->site->ajouter_message($extension);
+			if($extension!="jpg")
+			$function=imagecreatefrom.$extension;
+			else $function=imagecreatefrom.jpeg;
+			$image=imagecreatetruecolor($larg,$haut);
+			imagecopyresampled($image, $function($_FILES['photo']['tmp_name']), 0, 0, 0, 0, $larg, $haut, $taille[0],$taille[1]);
 			
-			$taille = filesize($_FILES['photo']['tmp_name']);
-			
-			if($taille>$taille_max)
-				$error[]="taille trop grande";
-			if(!move_uploaded_file($_FILES['photo']['tmp_name'], $dossier.$fichier.".png"))
-				$error[]="echec upload";
+			imagepng($image,$dossier.$fichier.".png",9);
 			
 			
 				
@@ -194,15 +201,12 @@
 			else{
 				$img['idImage']=$fichier;
 				$img['idModele']=$this->req->id;
-				
 				$image=new Image($img);
 				$imgM= new ImageManager(DB::get_instance());
-				$imgM->add($image); 
-				$this->site->ajouter_message($img['idImage']);
-				$this->site->ajouter_message($this->req->id);
+				$imgM->add($image);
 				$this->site->ajouter_message("upload réussi");
 				//il faudra penser à redimensionner la photo
-				Site::redirect("index");
+				Site::redirect("admMarque");
 			}
 		}
 		

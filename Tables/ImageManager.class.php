@@ -23,13 +23,15 @@
 			else echo "Les conditions d'ajouts ne sont pas validées! Voir trigger_error";
 		}
 		
-		public function listing(){
-		
-			$q=$this->_db->query("SELECT * FROM image");
+		public function listing($id)
+		{
+			$q=$this->_db->prepare("SELECT * FROM image WHERE idModele=:id");
+			$q->execute(array(":id"=> $id));
 			while($rep=$q->fetch(PDO::FETCH_ASSOC))
 			{
-				echo "$- $rep[idImage]  --  $rep[idModele] <br />";
+				$tab[]=new Image($rep);
 			}
+			return $tab;
 		}
 		
 		public function get($id){

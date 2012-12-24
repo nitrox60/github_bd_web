@@ -143,6 +143,7 @@
 			<a href="?module=inscription">Inscription</a>
 			<a href="?module=admSpace">Administration</a>
 			<a href="?module=loc">Location</a>
+			<a href="?module=car">Nos voitures</a>
 			<span id="ifLog">
 			{if (isset($login))}
 				Connecté :{$login}<a href='?module=login&action=deconnect'>Logout</a>{/if}</span>

@@ -21,7 +21,7 @@
 		{
 			if($this->req->name)
 			{
-			$db=DB::get_instance();
+				$db=DB::get_instance();
 				$mm= new MarqueManager($db);
 				$modm= new ModeleManager($db);
 				$mq=$mm->getByName($this->req->name);
@@ -36,11 +36,33 @@
 					echo json_encode($tab);
 					exit;
 				}
-				else Site::redirect('loc','index');
+				else Site::redirect('car','index');
 			
 			}
 			else Site::redirect('index');
+		}
 		
+		public function action_ajaxph()
+		{
+			if($this->req->name)
+			{
+				$db=DB::get_instance();
+				$modm= new ModeleManager($db);
+				$imgm= new ImageManager($db);
+				$mod=$modm->getByName($this->req->name);
+				if($mod)
+				{
+					$listeImg=$imgm->listing($mod->getIdModele());
+					foreach ($listeImg as $img)
+					{
+						$res[]=$img->getIdImage();
+					}
+					echo json_encode($res);
+					exit;
+				}
+				else Site::redirect('loc','index');
+			}
+			else Site::redirect('index');
 		}
 	}
 ?>

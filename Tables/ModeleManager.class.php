@@ -31,13 +31,13 @@
 		}
 		
 		public function getByName($name)
-		  {
+		{
 			$req=$this->_db->prepare("SELECT * FROM modele WHERE nomModele=:nom");
-				$req->execute(array(":nom"=> $name));
-				$rep=$req->fetch(PDO::FETCH_ASSOC);
-				if($rep)return new Modele($rep);
-				else return null;
-		  }
+			$req->execute(array(":nom"=> $name));
+			$rep=$req->fetch(PDO::FETCH_ASSOC);
+			if($rep)return new Modele($rep);
+			else return null;
+		}
 	
 		
 		
@@ -49,7 +49,7 @@
 			{
 				$tab[]=new Modele($rep);
 			}
-		return $tab;
+			return $tab;
 		}
 		
 		 public function delete(Modele $mod)
