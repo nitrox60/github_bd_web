@@ -53,7 +53,7 @@ Class FrontController{
 		}
 		else $m=new $module();
 		
-		if($this->session->ouverte())$this->tpl->assign("login",$this->session->user);
+		if($this->session->ouverte())$this->tpl->assign("login",$this->session->user->getMail());//Assigne la valeur de $login dans main.tpl
 		//nom du template à appeler, par défaut
 		$m->set_tpl_name("$module"."-$action");
 		//nom de la fonction à appeler

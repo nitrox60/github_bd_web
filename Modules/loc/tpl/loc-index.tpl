@@ -60,6 +60,12 @@ text-align:center;
 
 }
 
+label, .voiture
+{
+	margin-left:225px;
+
+}
+
 
 
 
@@ -74,9 +80,10 @@ text-align:center;
 <script src="./js/jquery-1.4.3.min.js"></script>
 <script>
 	$(function(){
-		$('#marque').change(function(){
+	
+		$('#marque').change(function(){ //Appelé quand un changement s'éffectue sur la premier liste déroulante
 			
-				$('#sel').html('<img src="./images/ajax-loader_loc.gif"/>').show();
+				$('#sel').html('<img src="./images/ajax-loader_loc.gif"/>').show(); //Pendant le chargement
 				if($('#marque').val()==0)$('#sel').html('').hide();
 				else
 				{
@@ -97,7 +104,7 @@ text-align:center;
 										//$("#sel").html("<option>"+$("select[name=marque] >option:selected").html()+"</option>").show();
 										txt+="<option>"+data[i]+"</option>"
 								}
-								$('#sel').html("<select id=\"mod\" name=\"mod\">"+txt+"</select>").show();
+								$('#sel').html("<label for=\"mod\">Modèle</label><select id=\"mod\" name=\"mod\">"+txt+"</select>").show();
 								
 							}
 							else $('#sel').html('').hide();

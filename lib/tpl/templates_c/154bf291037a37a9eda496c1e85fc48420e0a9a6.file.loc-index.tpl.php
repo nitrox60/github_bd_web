@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2012-12-22 14:01:10
+<?php /* Smarty version Smarty-3.1.1, created on 2012-12-25 22:39:53
          compiled from "modules\loc\tpl\loc-index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2654050d5b781ae0df0-42775933%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '154bf291037a37a9eda496c1e85fc48420e0a9a6' => 
     array (
       0 => 'modules\\loc\\tpl\\loc-index.tpl',
-      1 => 1356184700,
+      1 => 1356475191,
       2 => 'file',
     ),
   ),
@@ -85,6 +85,12 @@ text-align:center;
 
 }
 
+label, .voiture
+{
+	margin-left:225px;
+
+}
+
 
 
 
@@ -100,9 +106,10 @@ text-align:center;
 <script src="./js/jquery-1.4.3.min.js"></script>
 <script>
 	$(function(){
-		$('#marque').change(function(){
+	
+		$('#marque').change(function(){ //Appelé quand un changement s'éffectue sur la premier liste déroulante
 			
-				$('#sel').html('<img src="./images/ajax-loader_loc.gif"/>').show();
+				$('#sel').html('<img src="./images/ajax-loader_loc.gif"/>').show(); //Pendant le chargement
 				if($('#marque').val()==0)$('#sel').html('').hide();
 				else
 				{
@@ -123,7 +130,7 @@ text-align:center;
 										//$("#sel").html("<option>"+$("select[name=marque] >option:selected").html()+"</option>").show();
 										txt+="<option>"+data[i]+"</option>"
 								}
-								$('#sel').html("<select id=\"mod\" name=\"mod\">"+txt+"</select>").show();
+								$('#sel').html("<label for=\"mod\">Modèle</label><select id=\"mod\" name=\"mod\">"+txt+"</select>").show();
 								
 							}
 							else $('#sel').html('').hide();

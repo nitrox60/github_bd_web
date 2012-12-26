@@ -44,7 +44,7 @@ class Login extends Module{
 		if($a){
 			$this->tpl->assign('login',$a->getMail());
 			$this->tpl->assign('nom',$a->getNom());
-			$this->session->ouvrir($this->req->log);
+			$this->session->ouvrir($a);
 		}
 		else
 		{

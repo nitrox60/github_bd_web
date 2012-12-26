@@ -103,6 +103,7 @@
 		
 		public function action_valide()
 		{
+			$flag=false;
 			if(($this->req->dateloc) AND($this->req->daterendu))
 			{
 				$locm=$this->req->datelocm;
@@ -110,15 +111,38 @@
 				$rendum=$this->req->daterendum;
 				$renduh=$this->req->daterenduh;
 				
-				$this->site->ajouter_message($this->req->dateloc ."h ". $this->req->dateloch."_".$this->req->datelocm ."____".$this->req->daterendu ."h ". $this->req->daterenduh."_".$this->req->daterendum);
+				//$this->site->ajouter_message($this->req->dateloc ."h ". $this->req->dateloch."_".$this->req->datelocm ."____".$this->req->daterendu ."h ". $this->req->daterenduh."_".$this->req->daterendum);
 				if($this->req->dateloc>$this->req->daterendu)
 				$this->site->ajouter_message("loc> rendu");
 				else if($this->req->dateloc==$this->req->daterendu)
 				{
-					if($loch+6>$renduh) $this->site->ajouter_message("loc = rendu mais hloc>hrendu car durée minimal d'une location =6heure");
-					else if($loch==$renduh) $this->ajouter_message("Durée minimal d'une location = 6heures");
+					if($loch+6>$renduh) 
+					{
+						$this->site->ajouter_message("loc = rendu mais hloc>hrendu car durée minimal d'une location =6heure");
+						$flag=true;
+					}
+					else if($loch==$renduh) 
+					{
+						$this->site->ajouter_message("Durée minimal d'une location = 6heures");
+						$flag=true;
+					}
 				}
 				//location pas encore completement au point
+				
+				if(!$flag) //Si la location est validé
+				{
+					$user=$this->session->user;
+					$l['dateLoc']=$this->req->dateloc." ".$loch.":".$locm.":00";
+					$l['dateRendu']=$this->req->daterendu." ".$renduh.":".$rendum.":00";
+					$l['prixLoc']="75000"; //prix arbitraire temporaire
+					$l['idVoiture']=$this->req->id;
+					$l['idClient']=$user->getIdClient();
+					$loc=new Location($l);
+					$lm=new LocationManager(DB::get_instance());
+					$lm->add($loc);
+					$this->site->ajouter_message("Location enregistrée!");
+					Site::redirect("index");
+				}
 				
 			}else $this->site->ajouter_message("date loc ou date rendu non renseigné");
 			Site::redirect("loc","rent&id=".$this->req->id);

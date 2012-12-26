@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2012-12-22 13:34:38
+<?php /* Smarty version Smarty-3.1.1, created on 2012-12-25 22:28:54
          compiled from "templates\main.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:499250d5b6eef18be7-56145985%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6aae8c641d21506c83b2eef3095b796e7ec90482' => 
     array (
       0 => 'templates\\main.tpl',
-      1 => 1356083359,
+      1 => 1356474494,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.1',
+  'unifunc' => 'content_50d5b6ef34be2',
   'variables' => 
   array (
     'titre' => 0,
@@ -26,8 +28,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bloc_contenu' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.1',
-  'unifunc' => 'content_50d5b6ef34be2',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_50d5b6ef34be2')) {function content_50d5b6ef34be2($_smarty_tpl) {?><!-- start template-->
 <html>
@@ -176,6 +176,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<a href="?module=inscription">Inscription</a>
 			<a href="?module=admSpace">Administration</a>
 			<a href="?module=loc">Location</a>
+			<a href="?module=car">Nos voitures</a>
 			<span id="ifLog">
 			<?php if ((isset($_smarty_tpl->tpl_vars['login']->value))){?>
 				Connecté :<?php echo $_smarty_tpl->tpl_vars['login']->value;?>
