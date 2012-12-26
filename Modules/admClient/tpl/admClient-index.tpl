@@ -1,16 +1,4 @@
-﻿<style>
-table
-{
-border:1px solid black;
-border-collapse: collapse;
-text-align:center;
-}
-th, td
-{
-	border: 1px solid black;
-	padding:10px;
-}
-</style>
+﻿<link rel="stylesheet" href="./styles/admClient.css"/>
 
 <table align="center" valign="middle">
 		<tr><th>Id</th><th>Nom</th><th>Prenom</th><th>Rue</th><th>Code Postal</th><th>Ville</th><th>VIP</th><th>Date Inscription</th><th>Mail</th><th>Supprimer</th></tr>

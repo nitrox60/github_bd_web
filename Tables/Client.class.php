@@ -80,7 +80,7 @@
 		
 		public function setCodePostal($codePostal){
 			$taille=strlen($codePostal);
-			if($taille==5){ $this->_codePostal=(int)$codePostal;}
+			if($taille==5){ $this->_codePostal=$codePostal;}
 			else{
 				trigger_error("Le code postal ne convient pas ( format: XXXXX)",E_USER_WARNING);
 				$this->_addable=false;

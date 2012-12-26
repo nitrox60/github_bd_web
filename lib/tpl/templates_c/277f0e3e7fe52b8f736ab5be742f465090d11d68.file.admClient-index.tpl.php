@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2012-12-22 13:36:14
+<?php /* Smarty version Smarty-3.1.1, created on 2012-12-26 12:12:38
          compiled from "modules\admClient\tpl\admClient-index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3218550d5b6f2c70922-90157991%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '277f0e3e7fe52b8f736ab5be742f465090d11d68' => 
     array (
       0 => 'modules\\admClient\\tpl\\admClient-index.tpl',
-      1 => 1356183370,
+      1 => 1356523708,
       2 => 'file',
     ),
   ),
@@ -24,19 +24,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_50d5b6f2f390c')) {function content_50d5b6f2f390c($_smarty_tpl) {?>﻿<style>
-table
-{
-border:1px solid black;
-border-collapse: collapse;
-text-align:center;
-}
-th, td
-{
-	border: 1px solid black;
-	padding:10px;
-}
-</style>
+<?php if ($_valid && !is_callable('content_50d5b6f2f390c')) {function content_50d5b6f2f390c($_smarty_tpl) {?>﻿<link rel="stylesheet" href="./styles/admClient.css"/>
 
 <table align="center" valign="middle">
 		<tr><th>Id</th><th>Nom</th><th>Prenom</th><th>Rue</th><th>Code Postal</th><th>Ville</th><th>VIP</th><th>Date Inscription</th><th>Mail</th><th>Supprimer</th></tr>

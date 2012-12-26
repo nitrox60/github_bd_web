@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2012-12-22 14:03:59
+<?php /* Smarty version Smarty-3.1.1, created on 2012-12-26 12:22:46
          compiled from "modules\admModele\tpl\admModele-index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2402650d5bdcfe30f95-13304849%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3b52300cf0e7ed428bf64fc3e5d3192c470ed873' => 
     array (
       0 => 'modules\\admModele\\tpl\\admModele-index.tpl',
-      1 => 1356113010,
+      1 => 1356524564,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.1',
+  'unifunc' => 'content_50d5bdd054a6f',
   'variables' => 
   array (
     'marque' => 0,
@@ -23,129 +25,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.1',
-  'unifunc' => 'content_50d5bdd054a6f',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_50d5bdd054a6f')) {function content_50d5bdd054a6f($_smarty_tpl) {?>﻿<style>
-table
-{
-border:1px solid black;
-border-collapse: collapse;
-text-align:center;
-}
-th, td
-{
-	border: 1px solid black;
-}
-
-a
-{
-	
-	text-decoration:none;
-	
-}
-
-.button_add
-{
-	border:2px solid black;
-	border-radius:3px 3px 3px;
-	background-color:rgba(11,232,0,0.8);
-	width:8%;
-	text-align:center;
-	padding:2px;
-	margin-left:10px;
-	margin-bottom:10px;
-	color:black;
-}
-
-.button_add:hover
-{
-	box-shadow: 2px 2px 2px black;
-	border-radius: 10px 10px 10px;
-	text-shadow:1px 1px 1px white,
-				2px 2px 2px white,
-				1px 1px 1px white;
-	background: -webkit-linear-gradient(rgba(11,232,0,0.8), rgba(0,84,2,1));
-   background:    -moz-linear-gradient(rgba(11,232,0,0.8), rgba(0,84,2,1));
-   background:     -ms-linear-gradient(rgba(11,232,0,0.8), rgba(0,84,2,1));
-   background:      -o-linear-gradient(rgba(11,232,0,0.8), rgba(0,84,2,1));
-   background: linear-gradient(rgba(11,232,0,0.8), rgba(0,84,2,1));
-   
-   width:10%;
-   -webkit-transition: border-radius 0.5s,background 0.5s, width 0.2s ;
-	-moz-transition: border-radius 0.5s,background 0.5s, width 0.2s ;	
-	-ms-transition: border-radius 0.5s,background 0.5s, width 0.2s ;
-	-o-transition: border-radius 0.5s,background 0.5s, width 0.2s ;	
-	
-	transition: border-radius 0.5s,background 0.5s, width 0.2s ;
-}
-
-h2
-{
-	margin-left:33%;
-}
-
-th, td
-{
-	padding:10px;
-}
-
-
-
-.car
-{
-	display:none;
-}
-
-.ajax
-{
-	display:none;
-}
-
-#mq
-{
-
-	margin-left:30%;
-	border: 3px solid black;
-	width: 35%;
-	text-align:center;
-	border-radius:8px 8px 8px;
-	background: linear-gradient(#04BEED, #0383A3);
-	background: -webkit-linear-gradient(#04BEED, #0383A3);
-	background: -ms-linear-gradient(#04BEED, #0383A3);
-	background: -moz-linear-gradient(#04BEED, #0383A3);
-	background: -o-linear-gradient(#04BEED, #0383A3);
-	font-size:30px;
-	font-weight: bold;
-
-}
-
-.sup_car
-{
-	width:20%;
-	text-align:center;
-	text-decoration: none;
-	color: black;
-	border : 1 px solid black;
-	border-radius: 6px 6px 6px ;
-	padding: 2px;
-	background: linear-gradient(#FF0004, #B20000);
-	background: -webkit-linear-gradient(#FF0004, #B20000);
-	background: -ms-linear-gradient(#FF0004, #B20000);
-	background: -moz-linear-gradient(#FF0004, #B20000);
-	background: -o-linear-gradient(#FF0004, #B20000);
-}
-
-.upd
-{
-	cursor:pointer;
-}
-a
-{
-	text-decoration:none;
-	color:black;
-}
-</style>
+<?php if ($_valid && !is_callable('content_50d5bdd054a6f')) {function content_50d5bdd054a6f($_smarty_tpl) {?>﻿<link rel="stylesheet" href="./styles/admModele-index.css"/>
 <div id="mq"><?php echo $_smarty_tpl->tpl_vars['marque']->value->getNomMarque();?>
 </div>
 

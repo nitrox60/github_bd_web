@@ -4,7 +4,7 @@ create table client(
 	nom varchar(20),
 	prenom varchar(20),
 	rue varchar(50),
-	codePostal int(5),
+	codePostal varchar(6),
 	ville varchar(30),
 	vip boolean,
 	dateInscription date,

@@ -48,12 +48,17 @@ Class FrontController{
 		{
 			if($this->session->ouverte()){
 				if($this->session->user=='admin')$m=new $module();
-				else {$this->site->ajouter_message("pas admin! mais {$this->session->user}"); Site::redirect('index'); exit;}
+				else {$this->site->ajouter_message("pas admin! mais {$this->session->user->getMail()}"); Site::redirect('index'); exit;}
 			}else {$this->site->ajouter_message("Vous n'êtes pas connecté"); Site::redirect('login','logadmin'); exit;}
 		}
 		else $m=new $module();
 		
-		if($this->session->ouverte())$this->tpl->assign("login",$this->session->user->getMail());//Assigne la valeur de $login dans main.tpl
+		if($this->session->ouverte())
+		{
+			if ($this->session->user=='admin') $this->tpl->assign("login",$this->session->user);
+			else $this->tpl->assign("login",$this->session->user->getMail());//Assigne la valeur de $login dans main.tpl
+			
+		}
 		//nom du template à appeler, par défaut
 		$m->set_tpl_name("$module"."-$action");
 		//nom de la fonction à appeler
