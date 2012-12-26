@@ -172,21 +172,20 @@
 			if(!in_array($extension, $extensions))
 				$error[]="mauvaise extension";
 				
-			$taille = getimagesize($_FILES['photo']['tmp_name']);
+			/*$taille = getimagesize($_FILES['photo']['tmp_name']);
 			$larg=300;
 			$reduc=($larg*100)/$taille[0];
 			$haut=($taille[1]*$reduc)/100;
 
-			$this->site->ajouter_message($extension);
 			if($extension!="jpg")
 			$function=imagecreatefrom.$extension;
 			else $function=imagecreatefrom.jpeg;
 			$image=imagecreatetruecolor($larg,$haut);
 			imagecopyresampled($image, $function($_FILES['photo']['tmp_name']), 0, 0, 0, 0, $larg, $haut, $taille[0],$taille[1]);
 			
-			imagepng($image,$dossier.$fichier.".png",9);
+			imagepng($image,$dossier.$fichier.".png",9);*/
 			
-			
+			move_uploaded_file($_FILES['photo']['tmp_name'],$dossier.$fichier.".jpg");	
 				
 			if(isset($error[0])){
 				$f=$this->session->formPh;

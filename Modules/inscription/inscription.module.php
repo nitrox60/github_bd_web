@@ -126,4 +126,13 @@
 				Site::redirect("index");
 			}
 		}
+		
+		public function action_ajax(){
+			$cm=new ClientManager(DB::get_instance());
+			$login=$this->req->login;
+			if($cm->chercherParMail($login))
+				$err[]="Ce mail a déjà un compte lié";
+			echo json_encode($err);
+			exit;
+		}
 	}
