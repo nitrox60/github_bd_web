@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2012-12-22 13:34:38
+<?php /* Smarty version Smarty-3.1.1, created on 2012-12-26 12:36:11
          compiled from "modules\admSpace\tpl\admSpace-index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2253150d5b6eed47392-63962504%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c8deff22c387e19a4692308b6068c9c839b5a3d6' => 
     array (
       0 => 'modules\\admSpace\\tpl\\admSpace-index.tpl',
-      1 => 1355996790,
+      1 => 1356525293,
       2 => 'file',
     ),
   ),
@@ -15,58 +15,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.1',
   'unifunc' => 'content_50d5b6eeed005',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_50d5b6eeed005')) {function content_50d5b6eeed005($_smarty_tpl) {?>﻿
-<style>
-
-h2
-{
-	margin-left:30%;
-	border: 3px solid black;
-	width: 35%;
-	text-align:center;
-	border-radius:8px 8px 8px;
-	background: linear-gradient(#04BEED, #0383A3);
-	background: -webkit-linear-gradient(#04BEED, #0383A3);
-	background: -ms-linear-gradient(#04BEED, #0383A3);
-	background: -moz-linear-gradient(#04BEED, #0383A3);
-	background: -o-linear-gradient(#04BEED, #0383A3);
-	margin-bottom: 10%;
-}
-
-img
-{
-	height: 40px;
-	width: 50px;
-
-}
-
-.link
-{
-	margin-left: 10%;
-}
-
-.link a
-{
-	margin-bottom:3px;
-	vertical-align:13px;
-	text-decoration: none;
-	color: black;
-	border : 1 px solid black;
-	border-radius: 6px 6px 6px ;
-	padding: 2px;
-	background: linear-gradient(#FF0004, #B20000);
-	background: -webkit-linear-gradient(#FF0004, #B20000);
-	background: -ms-linear-gradient(#FF0004, #B20000);
-	background: -moz-linear-gradient(#FF0004, #B20000);
-	background: -o-linear-gradient(#FF0004, #B20000);
-	
-	
-}
-</style>
+<link rel="stylesheet" href="./styles/admSpace.css"/>
 <h2>Espace administration</h2>
 
 <span class="link">

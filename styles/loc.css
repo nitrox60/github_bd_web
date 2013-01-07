@@ -1,0 +1,69 @@
+﻿/* Style de la page loc-index.tpl */
+.voiture
+{
+	width: 60%;
+	border: 2 px solid black;
+	
+
+	margin-bottom: 30px;
+	margin-left: 10%;
+	
+}
+
+select{
+	outline:none;
+}
+
+#sel
+{
+	width: 70%;
+	
+}
+
+#car
+{
+	width: 70%;
+	clear:both;
+}
+
+.b_loc
+{
+	
+	
+}
+
+.b_loc a{
+
+ text-decoration :none;
+ display:block;
+ line-height:40px;
+ width:100px;
+ 
+ border-radius: 10px 10px 7px;
+	font-size:30px;
+	  background: -webkit-linear-gradient(#028DFF, #01437C);
+   background:    -moz-linear-gradient(#028DFF, #01437C);
+   background:     -ms-linear-gradient(#028DFF, #01437C);
+   background:      -o-linear-gradient(#028DFF, #01437C);
+   background: linear-gradient(#028DFF, #16BC03);
+text-align:center;
+
+	margin-bottom:5px;
+	margin-top:4%;
+
+	margin-left: 31%;
+	color: black;
+
+	
+ 
+
+
+}
+
+label, .voiture
+{
+	margin-left:225px;
+
+}
+
+

@@ -92,9 +92,12 @@ class HTMLInput{
 					."<span>{$this->value}</span>" ; 
 					
 			case DATEANDTIME:
+			// ---- DATEANDTIME crée un champs qui lorsque l'on clique dessus ouvre un calendrier (datepicker en jq) et deux select pour choisir l'heure et les minutes
 				$r="$label<input $common  type='text' value='{$this->value}' />" ;
 				$e=" <label for='h' >Heure</label><select id='{$this->id}h' name='{$this->name}h'>";
 				$i=0;
+				$h="";
+				$m="";
 					for($i=0;$i<24;$i++){
 						if($i<10) {$a='0'.$i;$h.="<option value=\"$a\">$a</option>";}
 						else $h.="<option value=\"$i\">$i</option>";

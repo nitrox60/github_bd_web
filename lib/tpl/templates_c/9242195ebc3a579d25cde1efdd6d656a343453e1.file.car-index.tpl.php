@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2012-12-25 22:29:00
+<?php /* Smarty version Smarty-3.1.1, created on 2012-12-26 12:33:25
          compiled from "modules\car\tpl\car-index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2229050da28ac10f3e6-23700551%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9242195ebc3a579d25cde1efdd6d656a343453e1' => 
     array (
       0 => 'modules\\car\\tpl\\car-index.tpl',
-      1 => 1356474494,
+      1 => 1356525048,
       2 => 'file',
     ),
   ),
@@ -15,25 +15,35 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.1',
+  'unifunc' => 'content_50da28ac20486',
   'variables' => 
   array (
     'f_car' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.1',
-  'unifunc' => 'content_50da28ac20486',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_50da28ac20486')) {function content_50da28ac20486($_smarty_tpl) {?>
 <style>
-td
-{
-	height:10px;
-}
+	.image
+	{
+		height:57px;
+		width:100px;
+		cursor:pointer;
+	}
+	#big
+	{
+		height:350px;
+		width:630px;
+		display: block; 
+		margin: 0 auto; 
+	}
 </style>
 <?php echo $_smarty_tpl->tpl_vars['f_car']->value;?>
 
 <div id="sel"></div>
 <div style="clear:both;"></div><br/>
+<div id="min" tag="tagok"></div><br/>
 <div id="photo"></div>
 <script src="./js/jquery-1.4.3.min.js"></script>
 <script>
@@ -69,25 +79,31 @@ td
 		});
 			
 		$('#sel').change(function(){
-			$('#photo').html('').hide();
-				$.getJSON("?module=car&action=ajaxph&name="+$("select[name=mod] >option:selected").html(),"",function(data){ 
-							var i=0;
-							var prompt='';
-							if(data)
-							{
-								prompt='<table><tr>'
-								for(i=0;i<data.length;i++)
-								{
-									prompt+='<td><img src=./images/'+data[i]+'.png /></td>';
-									if(i%3==2)
-										prompt+='</tr><tr>';
-								}
-								prompt+='</tr></table>';
-								$('#photo').html(prompt).show(1000);	
-							}
-							else $('#photo').html('').hide();
-					})
-					
+			$('#min').html('').hide();
+			$.getJSON("?module=car&action=ajaxph&name="+$("select[name=mod] >option:selected").html(),"",function(data){ 
+				var i=0;
+				var prompt='';
+				if(data)
+				{	
+					prompt='<table class=ok><tr>'
+					for(i=0;i<data.length;i++)
+					{
+						prompt+='<td><img id='+data[i]+' class=image src=./images/'+data[i]+'.jpg /></td>';
+						if(i%3==7)
+							prompt+='</tr><tr>';
+					}
+					prompt+='</tr></table>';
+					$('#min').html(prompt).show(1000);	
+				}
+				else $('#min').html('').hide();
+			})					
 		});
+		
+		$('img').live('click', function(){
+			var image='';
+            $var=$(this).attr('src');
+			image='<img id="big" src='+$var+' />'
+			$('#photo').html(image).show(1000);
+        });
 	});
 </script><?php }} ?>

@@ -193,6 +193,24 @@
 	
 	});
 	
+	//On vérifie si le mail existe déjà.
+	$(function(){
+		$('#mail').blur(function(){
+			$.ajax({
+				type: 'GET',
+				url: '?module=inscription&action=ajax&login='+$('#mail').val(),
+				
+				dataType : 'json',	//Evite de faire $.parseJSON
+				success: function(data, txtStatus, jqXHR){
+					if(data)
+						$('#mail').after("<span class=\"error\">"+data+"</span>");
+					else $("#mail+ .error").remove();
+				}
+			})
+		})
+	})
+
+	
 	
 
 });

@@ -16,6 +16,6 @@ Double cliquez pour modifier le nom, le prix ou le taux
 <div class="ajax"></div>
 <div style="clear:both;"></div>
 <script src="./js/jquery-1.4.3.min.js"></script>
-<script src="./js/admModele-index.js></script>
+<script src="./js/admModele-index.js"></script>
 
 	
