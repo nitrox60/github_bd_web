@@ -13,15 +13,28 @@
 		display: block; 
 		margin: 0 auto; 
 	}
+	
+	#addcom
+	{
+		display:none;
+	}
 </style>
 {$f_car}
 <div id="sel"></div>
-<div style="clear:both;"></div><br/>
-<div id="min" tag="tagok"></div><br/>
+<div style="clear:both;"></div>
+<div id="min" tag="tagok"></div>
 <div id="photo"></div>
+<div id="bcom">
+
+<div id="com">ici foreach de tous les com!</div>
+<div id="addcom">{$f_com}</div>
+
+</div>
+<div style="clear:both;"></div>
 <script src="./js/jquery-1.4.3.min.js"></script>
 <script>
 	$(function(){
+		
 		$('#marque').change(function(){
 			if($('#marque').val()==0)$('#sel').html('').hide();
 				else
@@ -68,8 +81,13 @@
 					}
 					prompt+='</tr></table>';
 					$('#min').html(prompt).show(1000);	
+					$('#addcom').show("slow");
+					$('#addcom textarea').attr("placeholder","Commentaire").show();
 				}
-				else $('#min').html('').hide();
+				else{
+					$('#min').html('').hide();
+					$('#addcom').hide();	
+				}
 			})					
 		});
 		

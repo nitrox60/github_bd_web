@@ -14,7 +14,12 @@
 			}
 			$f=new Form("?module=car&action=valide","f_car");
 			$f->add_select("marque","marque","Marque",$option);
+			//tester la connexion
+			$fcom=new Form("?module=car&action=validcom","f_com");
+			$fcom->add_textarea("com","com","");
+			$fcom->add_submit("","","")->set_value("Envoyez");
 			$this->tpl->assign("f_car",$f);
+			$this->tpl->assign("f_com",$fcom);
 		}
 		
 		public function action_ajax()
@@ -64,5 +69,7 @@
 			}
 			else Site::redirect('index');
 		}
+		
+		
 	}
 ?>

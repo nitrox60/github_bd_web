@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2012-12-26 12:33:25
+<?php /* Smarty version Smarty-3.1.1, created on 2013-01-09 18:16:32
          compiled from "modules\car\tpl\car-index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2229050da28ac10f3e6-23700551%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9242195ebc3a579d25cde1efdd6d656a343453e1' => 
     array (
       0 => 'modules\\car\\tpl\\car-index.tpl',
-      1 => 1356525048,
+      1 => 1357755385,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'f_car' => 0,
+    'f_com' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -38,16 +39,28 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		display: block; 
 		margin: 0 auto; 
 	}
+	
+	#addcom
+	{
+		display:none;
+	}
 </style>
 <?php echo $_smarty_tpl->tpl_vars['f_car']->value;?>
 
 <div id="sel"></div>
-<div style="clear:both;"></div><br/>
-<div id="min" tag="tagok"></div><br/>
+<div style="clear:both;"></div>
+<div id="min" tag="tagok"></div>
 <div id="photo"></div>
+<div id="bcom">
+<div id="addcom"><?php echo $_smarty_tpl->tpl_vars['f_com']->value;?>
+</div>
+<div class="com"></div>
+</div>
+<div style="clear:both;"></div>
 <script src="./js/jquery-1.4.3.min.js"></script>
 <script>
 	$(function(){
+		
 		$('#marque').change(function(){
 			if($('#marque').val()==0)$('#sel').html('').hide();
 				else
@@ -94,8 +107,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					}
 					prompt+='</tr></table>';
 					$('#min').html(prompt).show(1000);	
+					$('#addcom').show("slow");
+					$('#addcom textarea').attr("placeholder","Commentaire").show();
 				}
-				else $('#min').html('').hide();
+				else{
+					$('#min').html('').hide();
+					$('#addcom').hide();	
+				}
 			})					
 		});
 		

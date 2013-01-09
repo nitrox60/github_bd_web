@@ -3,7 +3,7 @@ $(function(){
 	
 		$('#marque').change(function(){ //Appelé quand un changement s'éffectue sur la premier liste déroulante
 			
-				$('#sel').html('<img src="./images/ajax-loader_loc.gif"/>').show(); //Pendant le chargement
+				$('#load').html('<img class="imgload" src="./images/ajax-loader_loc.gif"/>').show(); //Pendant le chargement
 				if($('#marque').val()==0)$('#sel').html('').hide();
 				else
 				{
@@ -25,7 +25,7 @@ $(function(){
 										txt+="<option>"+data[i]+"</option>"
 								}
 								$('#sel').html("<label for=\"mod\">Modèle</label><select id=\"mod\" name=\"mod\">"+txt+"</select>").show();
-								
+								$('#load').html('');
 							}
 							else $('#sel').html('').hide();
 						}
@@ -34,7 +34,7 @@ $(function(){
 			});		
 			
 		$('#sel').change(function(){
-				$('#car').html('<img src="./images/ajax-loader_loc.gif"/>').show();
+				$('#load').html('<img class="imgload" src="./images/ajax-loader_loc.gif"/>').show();
 				if($('#mod').val()==0) $('#car').html('').hide() ;
 				else
 				{
@@ -51,11 +51,12 @@ $(function(){
 							
 								for(i=0;i<data.length;i++)
 								{
-									if(data[i]['disp'])	prompt+="<div class=\"voiture\"> Annee : "+data[i]['annee']+" -- Kilométrage : "+data[i]['km']+" <br /> Description : <br />"+data[i]['description']+"<div class='b_loc'><a href='?module=loc&action=rent&id="+data[i]['id']+"'>Louer</a></div></div><br />";
+									if(data[i]['disp'])	prompt+="<div class=\"voiture\"><div class='info'> Annee : "+data[i]['annee']+" &nbsp Kilométrage : "+data[i]['km']+" </div><br /><span class='desc'> Description :</span>&nbsp"+data[i]['description']+"<div class='b_loc'><a href='?module=loc&action=rent&id="+data[i]['id']+"'>Louer</a></div><div class='b_loc'><a href='?module=loc&action=rent&id="+data[i]['id']+"'>Infos</a></div></div><br />";
 								
 								}
 								if(prompt=='') prompt="Aucune voiture n'est actuellement disponible";
 								$('#car').html(prompt).show();
+								$('#load').html('');
 								
 							}
 							else $('#car').html('').hide();
