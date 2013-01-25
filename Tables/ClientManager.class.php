@@ -70,7 +70,6 @@
 			$rep=$req->fetch(PDO::FETCH_ASSOC);
 			if($rep!=null)
 			{
-				
 				return new Client($rep);
 			}
 			else return null;

@@ -1,75 +1,56 @@
 <?php
 
 	class car extends Module{
-		//Servira pour afficher nos voitures avec les photo
-		public function action_index()
+	
+	public function action_index()
 		{
 			$this->set_title("Module Nos voitures");
-			$mm=new MarqueManager(DB::get_instance());
-			$liste=$mm->listing();
-			$option[]='';
-			foreach($liste as $m)
-			{
-				$option[]=$m->getNomMarque();
-			}
-			$f=new Form("?module=car&action=valide","f_car");
-			$f->add_select("marque","marque","Marque",$option);
-			//tester la connexion
-			$fcom=new Form("?module=car&action=validcom","f_com");
-			$fcom->add_textarea("com","com","");
-			$fcom->add_submit("","","")->set_value("Envoyez");
-			$this->tpl->assign("f_car",$f);
-			$this->tpl->assign("f_com",$fcom);
-		}
-		
-		public function action_ajax()
-		{
-			if($this->req->name)
-			{
-				$db=DB::get_instance();
-				$mm= new MarqueManager($db);
-				$modm= new ModeleManager($db);
-				$mq=$mm->getByName($this->req->name);
-				if($mq)
-				{
-					$listeMod=$modm->listing($mq->getIdMarque());
-					
-					foreach($listeMod as $mod)
-					{
-						$tab[]=$mod->getNomModele();
-					}
-					echo json_encode($tab);
-					exit;
-				}
-				else Site::redirect('car','index');
-			
-			}
-			else Site::redirect('index');
-		}
-		
-		public function action_ajaxph()
-		{
 			if($this->req->name)
 			{
 				$db=DB::get_instance();
 				$modm= new ModeleManager($db);
 				$imgm= new ImageManager($db);
 				$mod=$modm->getByName($this->req->name);
+				$cm=new CommentaireManager($db);
 				if($mod)
 				{
-					$listeImg=$imgm->listing($mod->getIdModele());
-					foreach ($listeImg as $img)
-					{
-						$res[]=$img->getIdImage();
-					}
-					echo json_encode($res);
-					exit;
+					$idmodele=$mod->getIdModele();
+					$listeCom=$cm->listing($idmodele);
+					$this->tpl->assign("com",$listeCom);
+					$listeImg=$imgm->listing($idmodele);
+					$this->tpl->assign("photo",$listeImg);
 				}
 				else Site::redirect('loc','index');
 			}
 			else Site::redirect('index');
+			$fcom=new Form("?module=car&action=validcom&name=".$this->req->name,"f_com");
+			$i=0;
+			$notes[]='';
+			while($i<6)
+			{
+				$notes[]=$i;
+				$i++;
+			}
+			$fcom->add_select("note","note","Note",$notes);
+			$fcom->add_textarea("com","com","");
+			$fcom->add_submit("","","")->set_value("Envoyez");
+			$this->tpl->assign("f_com",$fcom);
 		}
 		
-		
+		public function action_validcom()
+		{
+			$com['idClient']=$this->session->session_ouverte()->getIdClient();
+			$modm=new ModeleManager(DB::get_instance());
+			$mod=$modm->getByName($this->req->name);
+			$com['idModele']=$mod->getIdModele();
+			$com['contenu']=$this->req->com;
+			$com['note']=$this->req->note;
+			$com['dateCom']=date('Y-m-d',time()+7200);
+			
+			$commentaire = new Commentaire($com);
+			$comm= new CommentaireManager(DB::get_instance());	
+			$comm->add($commentaire);
+			Site::redirect("car");
+		}
 	}
 ?>

@@ -42,8 +42,11 @@ class Login extends Module{
 		$cm= new ClientManager(DB::get_instance());
 		$a=$cm->connexion($this->req->log,$this->req->mdp);
 		if($a){
+			//$this->tpl->assign('idClient',$a->getIdClient());
+			$this->tpl->assign('idClient',$a->getIdClient());
 			$this->tpl->assign('login',$a->getMail());
 			$this->tpl->assign('nom',$a->getNom());
+			$this->site->ajouter_message($a->getIdClient());
 			$this->session->ouvrir($a);
 		}
 		else

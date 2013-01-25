@@ -9,20 +9,18 @@
         }
 		
 		public function add(Commentaire $comm){
-			if($comm->getAddable())
-			{
-				$q = $this->_db->prepare("INSERT INTO commentaire SET  dateCom=NOW(), contenu=:contenu, note=:note , idVoiture=:car, idClient=:auteur");
+			//if($comm->getAddable())
+			//{
+				$q = $this->_db->prepare("INSERT INTO commentaire SET  dateCom=NOW(), contenu=:contenu, note=:note , idModele=:car, idClient=:auteur");
 				
-				$q->bindValue(':car', $comm->getIdVoiture());
+				$q->bindValue(':car', $comm->getIdModele());
 				$q->bindValue(':auteur', $comm->getIdClient());
 				$q->bindValue(':contenu', $comm->getContenu());
 				$q->bindValue(':note', $comm->getNote(), PDO::PARAM_INT);
 			
-				
 				$q->execute();
-				echo "add";
-			}
-			else echo " conditions non valides. voir trigger_error";
+			//}
+			//else echo " conditions non valides. voir trigger_error";
 		}
 	
 		public function setDb($db){
@@ -30,15 +28,15 @@
 		
 		}
 		
-		public function listing(){
-		
-			$q=$this->_db->query("SELECT * FROM commentaire");//inclure clause where specifique a chaque voiture
+		public function listing($id)
+		{
+			$q=$this->_db->prepare("SELECT * FROM commentaire WHERE idModele=:id");  //inclure clause where specifique a chaque voiture
+			$q->execute(array(":id"=> $id));
 			while($rep=$q->fetch(PDO::FETCH_ASSOC))
 			{
-				//Recuperer le nom du client avec l'id
-				echo "$rep[idClient]<br />  $rep[note]<br />$rep[contenu]<br /><br /><br />";
+				$tab[]=new Commentaire($rep);
 			}
-		
+			return $tab;
 		}
 		
 		 public function delete(Commentaire $com)

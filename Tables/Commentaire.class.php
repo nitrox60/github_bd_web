@@ -2,7 +2,7 @@
 
 	class Commentaire{
 		private $_idCom;
-		private $_idVoiture;
+		private $_idModele;
 		private $_idClient;
 		private $_dateCom;
 		private $_contenu;
@@ -29,7 +29,7 @@
 	}
 	//getters
 		public function getIdCom(){ return $this->_idcom;}
-		public function getIdVoiture(){ return $this->_idVoiture;}
+		public function getIdModele(){ return $this->_idModele;}
 		public function getIdClient(){ return $this->_idClient;}
 		public function getDateCom(){ return $this->_dateCom;}
 		public function getContenu(){ return $this->_contenu;}
@@ -44,7 +44,7 @@
 			$this->_idCom=$id;
 		}
 	
-		public function setIdVoiture($voiture){
+		public function setIdModele($voiture){
 		
 			if($voiture!=null){
 			$this->_idVoiture=$voiture;

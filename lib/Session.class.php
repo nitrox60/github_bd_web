@@ -27,6 +27,9 @@ class Session{
 		return isset($this->user);
 	}
 
+	function session_ouverte(){
+		return ($this->user);
+	}
 
 	function __toString(){
 		return ($this->$user->login);

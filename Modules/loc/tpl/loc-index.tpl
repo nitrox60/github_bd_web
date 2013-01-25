@@ -3,6 +3,7 @@
 {$f_loc}
 <div id="sel"></div>
 <div id="car"></div>
+<div id="info"></div>
 <span id="load"></span>
 <div style="clear:both;"></div>
 

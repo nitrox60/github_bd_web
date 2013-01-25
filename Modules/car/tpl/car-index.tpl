@@ -13,20 +13,36 @@
 		display: block; 
 		margin: 0 auto; 
 	}
-	
-	#addcom
+	table.tabcom
 	{
-		display:none;
+		border:1px solid black;
+		border-collapse: collapse;
+		text-align:center;
+	}
+	th, td
+	{
+		border: 1px solid black;
+		padding:10px;
 	}
 </style>
-{$f_car}
+
 <div id="sel"></div>
 <div style="clear:both;"></div>
-<div id="min" tag="tagok"></div>
+<div id="min" tag="tagok">
+	<table class=ok><tr>
+	{foreach $photo as $p}
+		<td><img id={$p->getIdImage()} class=image src=./images/{$p->getIdImage()}.jpg /></td>
+	{/foreach}
+	</tr></table></div>
 <div id="photo"></div>
 <div id="bcom">
 
-<div id="com">ici foreach de tous les com!</div>
+<div id="com"><table classe="tabcom">
+	<tr><th>IdClient</th><th>DateCom</th><th>Contenu</th><th>Note</th></tr>
+	{foreach $com as $c}
+		<tr><td>{$c->getIdClient()}</td><td>{$c->getDateCom()}</td><td>{$c->getContenu()}</td><td>{$c->getNote()}</td></tr>
+	{/foreach}
+	</table></div>
 <div id="addcom">{$f_com}</div>
 
 </div>
@@ -34,63 +50,6 @@
 <script src="./js/jquery-1.4.3.min.js"></script>
 <script>
 	$(function(){
-		
-		$('#marque').change(function(){
-			if($('#marque').val()==0)$('#sel').html('').hide();
-				else
-				{
-					$.ajax({
-						type: 'GET',
-						url: '?module=car&action=ajax&name='+$("select[name=marque] >option:selected").html(),
-						
-						dataType : 'json',	//Evite de faire $.parseJSON
-						success: function(data, txtStatus, jqXHR){
-							
-								var i=0;
-								var txt='<option></option>';
-								
-								if(data) 
-								{
-									for(i=0;i<data.length;i++)
-									{
-											//$("#sel").html("<option>"+$("select[name=marque] >option:selected").html()+"</option>").show();
-											txt+="<option>"+data[i]+"</option>"
-									}
-									$('#sel').html("<select id=\"mod\" name=\"mod\">"+txt+"</select>").show();
-									
-								}
-								else $('#sel').html('').hide();
-						}
-					});	
-				}
-		});
-			
-		$('#sel').change(function(){
-			$('#min').html('').hide();
-			$.getJSON("?module=car&action=ajaxph&name="+$("select[name=mod] >option:selected").html(),"",function(data){ 
-				var i=0;
-				var prompt='';
-				if(data)
-				{	
-					prompt='<table class=ok><tr>'
-					for(i=0;i<data.length;i++)
-					{
-						prompt+='<td><img id='+data[i]+' class=image src=./images/'+data[i]+'.jpg /></td>';
-						if(i%3==7)
-							prompt+='</tr><tr>';
-					}
-					prompt+='</tr></table>';
-					$('#min').html(prompt).show(1000);	
-					$('#addcom').show("slow");
-					$('#addcom textarea').attr("placeholder","Commentaire").show();
-				}
-				else{
-					$('#min').html('').hide();
-					$('#addcom').hide();	
-				}
-			})					
-		});
-		
 		$('img').live('click', function(){
 			var image='';
             $var=$(this).attr('src');

@@ -37,15 +37,15 @@ create table voiture(
 	)engine=innodb;
 	
 CREATE TABLE commentaire(
-  idCom int(5) primary key AUTO_INCREMENT,
-  dateCom datetime ,
-  contenu text ,
-  note int(1),
-  idVoiture int(3),
-  idClient int(3),
-  constraint csc1 FOREIGN KEY (idVoiture) references voiture(idVoiture),
-    constraint csc2 FOREIGN KEY (idClient) references client(idClient)
-)engine=innodb;
+  	idCom int(5) primary key AUTO_INCREMENT,
+  	dateCom datetime ,
+  	contenu text ,
+  	note int(1),
+  	idModele int(3),
+  	idClient int(3),
+  	constraint csc1 FOREIGN KEY (idModele) references modele(idModele),
+  	constraint csc2 FOREIGN KEY (idClient) references client(idClient)
+	)engine=innodb;
 
 create table location(
 	idLoc int(5) primary key AUTO_INCREMENT,

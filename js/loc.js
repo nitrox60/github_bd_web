@@ -21,7 +21,7 @@ $(function(){
 							{
 								for(i=0;i<data.length;i++)
 								{
-										//$("#sel").html("<option>"+$("select[name=marque] >option:selected").html()+"</option>").show();
+										$("#sel").html("<option>"+$("select[name=marque] >option:selected").html()+"</option>").show();
 										txt+="<option>"+data[i]+"</option>"
 								}
 								$('#sel').html("<label for=\"mod\">Modèle</label><select id=\"mod\" name=\"mod\">"+txt+"</select>").show();
@@ -35,9 +35,10 @@ $(function(){
 			
 		$('#sel').change(function(){
 				$('#load').html('<img class="imgload" src="./images/ajax-loader_loc.gif"/>').show();
-				if($('#mod').val()==0) $('#car').html('').hide() ;
+				if($('#mod').val()==0) $('#car').html('').hide();
 				else
-				{
+				{	
+					$('#info').html("<div class='b_loc'><a href='?module=car&action=index&name="+$("select[name=mod] >option:selected").html()+"'></div>Infos</a>").show
 					$.ajax({
 						type: 'GET',
 						url: '?module=loc&action=ajaxmod&name='+$("select[name=mod] >option:selected").html(),
@@ -51,7 +52,7 @@ $(function(){
 							
 								for(i=0;i<data.length;i++)
 								{
-									if(data[i]['disp'])	prompt+="<div class=\"voiture\"><div class='info'> Annee : "+data[i]['annee']+" &nbsp Kilométrage : "+data[i]['km']+" </div><br /><span class='desc'> Description :</span>&nbsp"+data[i]['description']+"<div class='b_loc'><a href='?module=loc&action=rent&id="+data[i]['id']+"'>Louer</a></div><div class='b_loc'><a href='?module=loc&action=rent&id="+data[i]['id']+"'>Infos</a></div></div><br />";
+									if(data[i]['disp'])	prompt+="<div class=\"voiture\"><div class='info'> Annee : "+data[i]['annee']+" &nbsp Kilométrage : "+data[i]['km']+" </div><br /><span class='desc'> Description :</span>&nbsp"+data[i]['description']+"<div class='b_loc'><a href='?module=loc&action=rent&id="+data[i]['id']+"'>Louer</a></div></div><br />";
 								
 								}
 								if(prompt=='') prompt="Aucune voiture n'est actuellement disponible";
