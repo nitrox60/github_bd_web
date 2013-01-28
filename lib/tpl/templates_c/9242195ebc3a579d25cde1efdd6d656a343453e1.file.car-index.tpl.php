@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2013-01-09 18:16:32
+<?php /* Smarty version Smarty-3.1.1, created on 2013-01-10 10:48:52
          compiled from "modules\car\tpl\car-index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2229050da28ac10f3e6-23700551%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9242195ebc3a579d25cde1efdd6d656a343453e1' => 
     array (
       0 => 'modules\\car\\tpl\\car-index.tpl',
-      1 => 1357755385,
+      1 => 1357755596,
       2 => 'file',
     ),
   ),
@@ -52,9 +52,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <div id="min" tag="tagok"></div>
 <div id="photo"></div>
 <div id="bcom">
+
+<div id="com">ici foreach de tous les com!</div>
 <div id="addcom"><?php echo $_smarty_tpl->tpl_vars['f_com']->value;?>
 </div>
-<div class="com"></div>
+
 </div>
 <div style="clear:both;"></div>
 <script src="./js/jquery-1.4.3.min.js"></script>
