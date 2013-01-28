@@ -87,11 +87,9 @@
 		}
 	
 		#contenu{
-			background: linear-gradient(#04BEED, #0383A3);
-			background: -webkit-linear-gradient(#04BEED, #0383A3);
-			background: -ms-linear-gradient(#04BEED, #0383A3);
-			background: -moz-linear-gradient(#04BEED, #0383A3);
-			background: -o-linear-gradient(#04BEED, #0383A3);
+			
+			
+			background:#565656;
 			color:black;
 			padding:5px;
 			border-radius: 6px ;

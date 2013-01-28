@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2013-01-10 10:48:52
+<?php /* Smarty version Smarty-3.1.1, created on 2013-01-28 18:49:13
          compiled from "modules\car\tpl\car-index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2229050da28ac10f3e6-23700551%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9242195ebc3a579d25cde1efdd6d656a343453e1' => 
     array (
       0 => 'modules\\car\\tpl\\car-index.tpl',
-      1 => 1357755596,
+      1 => 1359397919,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_50da28ac20486',
   'variables' => 
   array (
-    'f_car' => 0,
+    'photo' => 0,
+    'p' => 0,
+    'com' => 0,
+    'c' => 0,
     'f_com' => 0,
   ),
   'has_nocache_code' => false,
@@ -39,21 +42,50 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		display: block; 
 		margin: 0 auto; 
 	}
-	
-	#addcom
+	table.tabcom
 	{
-		display:none;
+		border:1px solid black;
+		border-collapse: collapse;
+		text-align:center;
+	}
+	th, td
+	{
+		border: 1px solid black;
+		padding:10px;
 	}
 </style>
-<?php echo $_smarty_tpl->tpl_vars['f_car']->value;?>
 
 <div id="sel"></div>
 <div style="clear:both;"></div>
-<div id="min" tag="tagok"></div>
+<div id="min" tag="tagok">
+	<table class=ok><tr>
+	<?php  $_smarty_tpl->tpl_vars['p'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['p']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['photo']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['p']->key => $_smarty_tpl->tpl_vars['p']->value){
+$_smarty_tpl->tpl_vars['p']->_loop = true;
+?>
+		<td><img id=<?php echo $_smarty_tpl->tpl_vars['p']->value->getIdImage();?>
+ class=image src=./images/<?php echo $_smarty_tpl->tpl_vars['p']->value->getIdImage();?>
+.jpg /></td>
+	<?php } ?>
+	</tr></table></div>
 <div id="photo"></div>
 <div id="bcom">
 
-<div id="com">ici foreach de tous les com!</div>
+<div id="com"><table classe="tabcom">
+	<tr><th>IdClient</th><th>DateCom</th><th>Contenu</th><th>Note</th></tr>
+	<?php  $_smarty_tpl->tpl_vars['c'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['c']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['com']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['c']->key => $_smarty_tpl->tpl_vars['c']->value){
+$_smarty_tpl->tpl_vars['c']->_loop = true;
+?>
+		<tr><td><?php echo $_smarty_tpl->tpl_vars['c']->value->getIdClient();?>
+</td><td><?php echo $_smarty_tpl->tpl_vars['c']->value->getDateCom();?>
+</td><td><?php echo $_smarty_tpl->tpl_vars['c']->value->getContenu();?>
+</td><td><?php echo $_smarty_tpl->tpl_vars['c']->value->getNote();?>
+</td></tr>
+	<?php } ?>
+	</table></div>
 <div id="addcom"><?php echo $_smarty_tpl->tpl_vars['f_com']->value;?>
 </div>
 
@@ -62,63 +94,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <script src="./js/jquery-1.4.3.min.js"></script>
 <script>
 	$(function(){
-		
-		$('#marque').change(function(){
-			if($('#marque').val()==0)$('#sel').html('').hide();
-				else
-				{
-					$.ajax({
-						type: 'GET',
-						url: '?module=car&action=ajax&name='+$("select[name=marque] >option:selected").html(),
-						
-						dataType : 'json',	//Evite de faire $.parseJSON
-						success: function(data, txtStatus, jqXHR){
-							
-								var i=0;
-								var txt='<option></option>';
-								
-								if(data) 
-								{
-									for(i=0;i<data.length;i++)
-									{
-											//$("#sel").html("<option>"+$("select[name=marque] >option:selected").html()+"</option>").show();
-											txt+="<option>"+data[i]+"</option>"
-									}
-									$('#sel').html("<select id=\"mod\" name=\"mod\">"+txt+"</select>").show();
-									
-								}
-								else $('#sel').html('').hide();
-						}
-					});	
-				}
-		});
-			
-		$('#sel').change(function(){
-			$('#min').html('').hide();
-			$.getJSON("?module=car&action=ajaxph&name="+$("select[name=mod] >option:selected").html(),"",function(data){ 
-				var i=0;
-				var prompt='';
-				if(data)
-				{	
-					prompt='<table class=ok><tr>'
-					for(i=0;i<data.length;i++)
-					{
-						prompt+='<td><img id='+data[i]+' class=image src=./images/'+data[i]+'.jpg /></td>';
-						if(i%3==7)
-							prompt+='</tr><tr>';
-					}
-					prompt+='</tr></table>';
-					$('#min').html(prompt).show(1000);	
-					$('#addcom').show("slow");
-					$('#addcom textarea').attr("placeholder","Commentaire").show();
-				}
-				else{
-					$('#min').html('').hide();
-					$('#addcom').hide();	
-				}
-			})					
-		});
-		
 		$('img').live('click', function(){
 			var image='';
             $var=$(this).attr('src');

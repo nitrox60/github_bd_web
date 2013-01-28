@@ -47,11 +47,11 @@
 		public function setIdModele($voiture){
 		
 			if($voiture!=null){
-			$this->_idVoiture=$voiture;
+			$this->_idModele=$voiture;
 			}
 			else 
 			{
-				trigger_error("La CS IdVoiture ne peut pas être null",E_USER_WARNING);
+				trigger_error("La CS IdModele ne peut pas être null",E_USER_WARNING);
 				$this->_addable=false;
 			}
 		}
@@ -96,7 +96,7 @@
 		public function setNote($note){
 		
 			$note=(int)$note;
-				if(($note>=0) &&($note<=5))
+				if(($note>=0) &&($note<6))
 				$this->_note=$note;
 				else{
 					trigger_error("0<=note<=5 !!",E_USER_WARNING);

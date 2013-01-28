@@ -13,7 +13,7 @@
 			//{
 				$q = $this->_db->prepare("INSERT INTO commentaire SET  dateCom=NOW(), contenu=:contenu, note=:note , idModele=:car, idClient=:auteur");
 				
-				$q->bindValue(':car', $comm->getIdModele());
+				$q->bindValue(':car', $comm->getIdModele(), PDO::PARAM_INT);
 				$q->bindValue(':auteur', $comm->getIdClient());
 				$q->bindValue(':contenu', $comm->getContenu());
 				$q->bindValue(':note', $comm->getNote(), PDO::PARAM_INT);

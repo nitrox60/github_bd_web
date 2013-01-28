@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2013-01-09 17:05:27
+<?php /* Smarty version Smarty-3.1.1, created on 2013-01-28 18:34:11
          compiled from "modules\loc\tpl\loc-index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2654050d5b781ae0df0-42775933%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '154bf291037a37a9eda496c1e85fc48420e0a9a6' => 
     array (
       0 => 'modules\\loc\\tpl\\loc-index.tpl',
-      1 => 1357751102,
+      1 => 1359397919,
       2 => 'file',
     ),
   ),
@@ -29,6 +29,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 <div id="sel"></div>
 <div id="car"></div>
+<div id="info"></div>
 <span id="load"></span>
 <div style="clear:both;"></div>
 
