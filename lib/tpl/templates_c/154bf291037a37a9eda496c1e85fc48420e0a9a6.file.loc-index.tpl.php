@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2013-01-28 18:34:11
+<?php /* Smarty version Smarty-3.1.1, created on 2013-01-31 17:17:54
          compiled from "modules\loc\tpl\loc-index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2654050d5b781ae0df0-42775933%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '154bf291037a37a9eda496c1e85fc48420e0a9a6' => 
     array (
       0 => 'modules\\loc\\tpl\\loc-index.tpl',
-      1 => 1359397919,
+      1 => 1359652596,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_50d5b781ed0eb')) {function content_50d5b781ed0eb($_smarty_tpl) {?>﻿<link rel="stylesheet" href="./styles/loc.css"/>
-
+<div id="test"></div>
 <?php echo $_smarty_tpl->tpl_vars['f_loc']->value;?>
 
 <div id="sel"></div>

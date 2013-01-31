@@ -1,4 +1,90 @@
 ﻿/* Style de la page loc-index.tpl */
+
+*{
+
+font-family:verdana;
+font-size:14px;
+}
+
+#test
+{
+	display: table;
+	 width: 500px;
+   margin: 10px auto;
+   padding: 0;
+	
+}
+
+.mq_but
+{
+	
+	background: -webkit-linear-gradient(#04BEED, #0383A3);
+	border-radius: 10px 10px 10px 10px;
+	padding:2px;
+	box-shadow: 1px 1px 1px 1px white ;
+	height:2em;
+	padding-top:5px;
+	display: table-cell;
+	
+}
+
+.mq_but>a
+{
+	display:block;
+	text-align:center;
+	text-decoration: none;
+	color:black;
+	position:relative;
+	text-align: center;
+   padding: 3px 8px 17px 8px;
+	
+}
+
+.mq_but>a:hover::before,
+.mq_but>a:focus::before{
+   background: white;
+   box-shadow: 0 0 2px white, 
+               0 -1px 0 rgba(0, 0, 0, .4);
+}
+
+.mq_but>a::before
+{
+	
+   content: '';
+   position:absolute;
+    left: 50%;
+   bottom: 10px;
+   margin-left: -2px;
+   width: 4px;
+   height: 4px;
+   border-radius: 50%;
+   background: rgba(0, 0, 0, .5);
+   cursor:pointer;
+}
+
+
+#test>.mq_but:hover:nth-child(odd) , .mq_but:focus:nth-child(odd)
+{
+	-webkit-transform:  rotate(-10deg) scale(1.2);
+	transform: rotate(-10deg) scale(1.2);
+	-webkit-transition: 0.2s -webkit-transform;
+	transition: 0.2s transform;
+	
+	
+}
+
+#test>.mq_but:hover:nth-child(even) , .mq_but:focus:nth-child(odd)
+{
+	-webkit-transform:  rotate(10deg) scale(1.2);
+	transform: rotate(10deg) scale(1.2);
+	-webkit-transition: 0.2s -webkit-transform;
+	transition: 0.2s transform;
+	
+	
+}
+
+
+
 .voiture
 {
 	width: 60%;

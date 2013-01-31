@@ -1,6 +1,17 @@
 ﻿//Jquery page loc-index.tpl
 $(function(){
 	
+	var mq="";
+	var ml=4;
+	var w=4;
+		$("#marque>option").each(function(){
+			if($(this).val()!=0)mq=mq+"<p class=\"mq_but\"style=\"margin-left:"+ml+"%;  width:auto; display:inline-block;\"><a href=\"#\" >"+ $(this).html()+"</a></p>";
+			
+			
+		});
+		
+		$("#test").html(mq);
+	
 		$('#marque').change(function(){ //Appelé quand un changement s'éffectue sur la premier liste déroulante
 			
 				$('#load').html('<img class="imgload" src="./images/ajax-loader_loc.gif"/>').show(); //Pendant le chargement
