@@ -51,13 +51,12 @@
 			$mod=$modm->getByName($this->req->name);
 			$com['idModele']=$mod->getIdModele();
 			$com['contenu']=$this->req->com;
-			$com['note']=$this->req->note;
+			$com['note']=($this->req->note-1);
 			$com['dateCom']=date('Y-m-d',time()+7200);
-			$this->site->ajouter_message($mod->getIdModele());
 			$commentaire = new Commentaire($com);
 			$comm= new CommentaireManager(DB::get_instance());	
 			$comm->add($commentaire);
-			Site::redirect("car");
+			Site::redirect("car","index&name=".$this->req->name);
 		}
 	}
 ?>
