@@ -11,6 +11,45 @@ $(function(){
 		});
 		
 		$("#test").html(mq);
+		
+		var marq="";
+		$('#test a').click(function(){ //Appelé quand un changement s'éffectue sur la premier liste déroulante
+			
+				$('#load').html('<img class="imgload" src="./images/ajax-loader_loc.gif"/>').show(); //Pendant le chargement
+				$("#test a").parent().css("box-shadow"," none");
+				$(this).parent().css("box-shadow","1px 1px 1px 1px white ");
+				
+				marq=$(this)
+					$.ajax({
+						type: 'GET',
+						url: '?module=loc&action=ajax&name='+$(marq).html(),
+						
+						dataType : 'json',	//Evite de faire $.parseJSON
+						success: function(data, txtStatus, jqXHR){
+							
+							var i=0;
+							var txt='<div id="test2">';
+							
+							if(data) 
+							{
+								for(i=0;i<data.length;i++)
+								{
+									txt+="<span class='mod_but'><a href=\"#\">"+data[i]+"</a></span>"
+								}
+								//$('#sel').html("<label for=\"mod\">Modèle</label><select id=\"mod\" name=\"mod\">"+txt+"</select>").show();
+								$('#sel').html(txt+"</div>").show();
+								$('#load').html('');
+							}
+							else
+							{	
+								$('#sel').html('').hide();
+								$('#load').html("Aucune modèle disponible");
+								marq.parent().css("background","red");
+							}
+						}
+					});	
+				return false;
+			});
 	
 		$('#marque').change(function(){ //Appelé quand un changement s'éffectue sur la premier liste déroulante
 			
