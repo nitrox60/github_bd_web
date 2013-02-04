@@ -1,7 +1,7 @@
 ﻿<link rel="stylesheet" href="./styles/loc.css"/>
 <div id="test"></div>
 {$f_loc}
-<div id="sel"></div>
+<div id="test2"><a href="#"></a></div>
 <div id="car"></div>
 <div id="info"></div>
 <span id="load"></span>
