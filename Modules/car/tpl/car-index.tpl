@@ -8,8 +8,8 @@
 	}
 	#big
 	{
-		height:350px;
-		width:500px;
+		height:500px;
+		width:750px;
 		display: block; 
 		margin: 0 auto; 
 	}
@@ -158,7 +158,7 @@
 					width: "show",
 					height:"show",
 					margin: "0 auto"
-				},4000);
+				},500);
 			}
 			else if ($(this).attr('id')=="big")
 			{
