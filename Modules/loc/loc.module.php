@@ -15,10 +15,10 @@
 				$f=new Form("?module=loc&action=valide","f_loc");
 				$f->add_select("marque","marque","Marque",$option);
 				$this->tpl->assign("f_loc",$f);
-		
-		
+				
+				
+			
 		}
-		
 		public function action_ajax()
 		{
 			if($this->req->name)
@@ -58,10 +58,14 @@
 				{
 					$listecar=$vm->listing($mod->getIdModele());
 					$i=0;
-						if(!$listecar)$tab[$i]['disp']=false;
+						if(!$listecar)$tab="undefined";
 						foreach($listecar as $car)
 						{
-							if(!$lm->isAvailable($car->getIdVoiture()))$tab[$i]['disp']=true;//Test si dans la voiture parcouru est disponible.
+							if($lm->isAvailable($car->getIdVoiture()))
+							{
+								$tab[$i]['disp']=true;//Test si dans la voiture parcouru est disponible.
+								
+							}
 					        else $tab[$i]['disp']=false;
 							
 							$tab[$i]['id']=$car->getIdVoiture();

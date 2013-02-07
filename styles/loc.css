@@ -200,6 +200,35 @@ text-align:center;
 
 }
 
+.b_loc_unavailable a{
+
+ text-decoration :none;
+ display:block;
+ line-height:40px;
+ width:100px;
+ 
+ border-radius: 10px 10px 7px;
+	font-size:30px;
+	 background: linear-gradient(#FF0004, #B20000);
+			background: -webkit-linear-gradient(#FF0004, #B20000);
+			background: -ms-linear-gradient(#FF0004, #B20000);
+			background: -moz-linear-gradient(#FF0004, #B20000);
+			background: -o-linear-gradient(#FF0004, #B20000);
+text-align:center;
+
+	margin-bottom:5px;
+	margin-top:4%;
+
+
+	margin-left: 38%;
+	color: black;
+
+	
+ 
+
+
+}
+
 label, .voiture
 {
 	margin-left:225px;

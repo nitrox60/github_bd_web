@@ -13,7 +13,10 @@ $(function(){
 		
 		var marq="";
 		$('#test a').click(function(){ //Appelé quand un changement s'éffectue sur la premier liste déroulante
-			
+				$(".voiture").each(function(){
+				$(this).hide();
+				});
+				
 				$('#load').html('<img class="imgload" src="./images/ajax-loader_loc.gif"/>').show(); //Pendant le chargement
 				$("#test a").parent().css("box-shadow"," none");
 				$(this).parent().css("box-shadow","1px 1px 1px 1px white ");
@@ -71,10 +74,10 @@ $(function(){
 						{
 							for(i=0;i<data.length;i++)
 							{
-								if(data[i]['disp'])	prompt+="<div class=\"voiture\"><div class='info'> Annee : "+data[i]['annee']+" &nbsp Kilométrage : "+data[i]['km']+" </div><br /><span class='desc'> Description :</span>&nbsp"+data[i]['description']+"<div class='b_loc'><a href='?module=loc&action=rent&id="+data[i]['id']+"'>Louer</a></div></div><br />";
-							
+								if(data[i]['disp']==true)	prompt+="<div class=\"voiture\"><div class='info'> Annee : "+data[i]['annee']+" &nbsp Kilométrage : "+data[i]['km']+" </div><br /><span class='desc'> Description :</span>&nbsp"+data[i]['description']+"<div class='b_loc'><a href='?module=loc&action=rent&id="+data[i]['id']+"'>Louer</a></div></div><br />";
+								else if(data[i]['disp']==false) prompt+="<div class=\"voiture\"><div class='info'> Annee : "+data[i]['annee']+" &nbsp Kilométrage : "+data[i]['km']+" </div><br /><span class='desc'> Description :</span>&nbsp"+data[i]['description']+"<div class='b_loc_unavailable'><a href='?module=loc&action=rent&id="+data[i]['id']+"'>Louer</a></div></div><br />";
 							}
-							if(prompt=='') prompt="Aucune voiture n'est actuellement disponible";
+							if(prompt=='') prompt="<div class=\"voiture\">Aucune voiture n'est actuellement disponible</div>";
 							$('#car').html(prompt).show();
 							$('#load').html('');
 										
