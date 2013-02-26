@@ -45,6 +45,17 @@
 		
 		}
 		
+		public function action_isOK() //Renvoi true ( via ajax ) si l'user est co false sinon
+		{
+			$res=false;
+			if($this->session->ouverte())
+			{
+				$res=true;
+			}
+			echo json_encode($res);
+			exit;
+		}
+		
 		public function action_ajaxmod()
 		{
 			if($this->req->name)

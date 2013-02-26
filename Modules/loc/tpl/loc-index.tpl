@@ -1,7 +1,7 @@
 ﻿<link rel="stylesheet" href="./styles/loc.css"/>
-
+<a href="#?w=500" rel="popup_name" class="poplight">En savoir plus</a>
 <div id="popup_name" class="popup_block">
-	<h2>Connexion</h2>
+	<h2>Vous n'êtes pas connecté</h2>
 	<!-- <form id="f_co_pop" name="f_co_pop" method="post" enctype="text/plain" action="?module=login&action=coajax"> -->
 	<fieldset>
 	<label for="ndc_pop">Email</label><input   type="text" name="ndc_pop" id="ndc_pop"/>

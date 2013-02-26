@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2013-02-26 16:31:42
+<?php /* Smarty version Smarty-3.1.1, created on 2013-02-26 18:23:42
          compiled from "modules\loc\tpl\loc-index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3021951237b5f3f2642-41703443%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '154bf291037a37a9eda496c1e85fc48420e0a9a6' => 
     array (
       0 => 'modules\\loc\\tpl\\loc-index.tpl',
-      1 => 1361896259,
+      1 => 1361903019,
       2 => 'file',
     ),
   ),
@@ -24,9 +24,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51237b5f47bdb')) {function content_51237b5f47bdb($_smarty_tpl) {?>﻿<link rel="stylesheet" href="./styles/loc.css"/>
-
+<a href="#?w=500" rel="popup_name" class="poplight">En savoir plus</a>
 <div id="popup_name" class="popup_block">
-	<h2>Connexion</h2>
+	<h2>Vous n'êtes pas connecté</h2>
 	<!-- <form id="f_co_pop" name="f_co_pop" method="post" enctype="text/plain" action="?module=login&action=coajax"> -->
 	<fieldset>
 	<label for="ndc_pop">Email</label><input   type="text" name="ndc_pop" id="ndc_pop"/>
