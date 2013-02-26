@@ -60,8 +60,11 @@ $(function(){
 			if($('#mod').val()==0) $('#car').html('').hide();
 			else
 			{	
-				mod=$(this);
+			
+			
+			mod=$(this);
 				$('#info').html("<div class='b_loc'><a href='?module=car&action=index&name="+$(mod).html()+"'></div>Infos</a>").show
+				//Test de connexion a éffectuer ici. via ajax
 				$.ajax({
 					type: 'GET',
 					url: '?module=loc&action=ajaxmod&name='+$(mod).html(),
@@ -74,10 +77,18 @@ $(function(){
 						{
 							for(i=0;i<data.length;i++)
 							{
-								if(data[i]['disp']==true)	prompt+="<div class=\"voiture\"><div class='info'> Annee : "+data[i]['annee']+" &nbsp Kilométrage : "+data[i]['km']+" </div><br /><span class='desc'> Description :</span>&nbsp"+data[i]['description']+"<div class='b_loc'><a href='?module=loc&action=rent&id="+data[i]['id']+"'>Louer</a></div></div><br />";
-								else if(data[i]['disp']==false) prompt+="<div class=\"voiture\"><div class='info'> Annee : "+data[i]['annee']+" &nbsp Kilométrage : "+data[i]['km']+" </div><br /><span class='desc'> Description :</span>&nbsp"+data[i]['description']+"<div class='b_loc_unavailable'><a href='?module=loc&action=rent&id="+data[i]['id']+"'>Louer</a></div></div><br />";
+								if(data[i]['disp']==true)
+									if(data[i]['open']==false)
+										prompt+="<div class=\"voiture\"><div class='info'> Annee : "+data[i]['annee']+" &nbsp Kilométrage : "+data[i]['km']+" </div><br /><span class='desc'> Description :</span>&nbsp"+data[i]['description']+"<div class='b_loc'><a href=\"#?w=800\" rel=\"popup_name\" class=\"poplight\">Louer</a></div></div><br />";
+									else
+										prompt+="<div class=\"voiture\"><div class='info'> Annee : "+data[i]['annee']+" &nbsp Kilométrage : "+data[i]['km']+" </div><br /><span class='desc'> Description :</span>&nbsp"+data[i]['description']+"<div class='b_loc'><a href='?module=loc&action=rent&id="+data[i]['id']+"'>Louer</a></div></div><br />";
+								
+								else if(data[i]['disp']==false) if(data[i]['open']==false)
+										prompt+="<div class=\"voiture\"><div class='info'> Annee : "+data[i]['annee']+" &nbsp Kilométrage : "+data[i]['km']+" </div><br /><span class='desc'> Description :</span>&nbsp"+data[i]['description']+"<div class='b_loc'><a href=\"#?w=800\" rel=\"popup_name\" class=\"poplight\">Louer</a></div></div><br />";
+									else
+										prompt+="<div class=\"voiture\"><div class='info'> Annee : "+data[i]['annee']+" &nbsp Kilométrage : "+data[i]['km']+" </div><br /><span class='desc'> Description :</span>&nbsp"+data[i]['description']+"<div class='b_loc'><a href='?module=loc&action=rent&id="+data[i]['id']+"'>Louer</a></div></div><br />";
 							}
-							if(prompt=='') prompt="<div class=\"voiture\">Aucune voiture n'est actuellement disponible</div>";
+									if(prompt=='') prompt="<div class=\"voiture\">Aucune voiture n'est actuellement disponible</div>";
 							$('#car').html(prompt).show();
 							$('#load').html('');
 										
@@ -86,5 +97,64 @@ $(function(){
 					}
 				});
 			}
-		});		
+		});
+		// sa marche faire un truc qui quand on CLICK sur LOUER apel un ajax qui soit redirige vers loc soit vers connexion comme sa pas besoin de refresh.
+		$(document).delegate('input.co_pop[type=submit]','click',function(){
+			var MINLENGTH_NDC=4;
+			var MINLENGTH_MDP=8;
+			if( ( $("#ndc_pop").val().length >= MINLENGTH_NDC) && ( $("#mdp_pop").val().length >= MINLENGTH_MDP))
+				$.ajax({	type: 'GET',
+					url: '?module=login&action=coajax&log='+$("#ndc_pop").val()+'&mdp='+$("#mdp_pop").val(),
+					dataType: 'json',
+					success: function(data,txtStatus, jqXHR){
+						if(data==true) alert("t");
+						else if(data==false) alert("f");
+					}
+					});
+			else
+				$("#error_pop").html("Email ou Mot de passe incorrecte!");
+			
+		});
+				
+				//Lorsque vous cliquez sur un lien de la classe poplight et que le href commence par #
+		$(document).delegate('a.poplight[href^=#]','click',function() {
+			var popID = $(this).attr('rel'); //Trouver la pop-up correspondante
+			var popURL = $(this).attr('href'); //Retrouver la largeur dans le href
+
+			//Récupérer les variables depuis le lien
+			var query= popURL.split('?');
+			var dim= query[1].split('&amp;');
+			var popWidth = dim[0].split('=')[1]; //La première valeur du lien
+
+			//Faire apparaitre la pop-up et ajouter le bouton de fermeture
+			$('#' + popID).fadeIn().css({
+				'width': Number(popWidth)
+			})
+			.prepend('<a href="#" class="close"><img src="./images/close_pop.png" class="btn_close" title="Fermer" alt="Fermer" /></a>');
+
+			//Récupération du margin, qui permettra de centrer la fenêtre - on ajuste de 80px en conformité avec le CSS
+			var popMargTop = ($('#' + popID).height() + 80) / 2;
+			var popMargLeft = ($('#' + popID).width() + 80) / 2;
+
+			//On affecte le margin
+			$('#' + popID).css({
+				'margin-top' : -popMargTop,
+				'margin-left' : -popMargLeft
+			});
+
+			//Effet fade-in du fond opaque
+			$('body').append('<div id="fade"></div>'); //Ajout du fond opaque noir
+			//Apparition du fond - .css({'filter' : 'alpha(opacity=80)'}) pour corriger les bogues de IE
+			$('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn();
+
+			return false;
+		});
+
+		//Fermeture de la pop-up et du fond
+		$('a.close, #fade').live('click', function() { //Au clic sur le bouton ou sur le calque...
+			$('#fade , .popup_block').fadeOut(function() {
+				$('#fade, a.close').remove();  //...ils disparaissent ensemble
+			});
+			return false;
+		});
 });

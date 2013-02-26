@@ -56,6 +56,24 @@ class Login extends Module{
 		}
 	}
 	
+	public function action_coajax()
+	{
+		$res=false;
+		$cm= new ClientManager(DB::get_instance());
+		$a=$cm->connexion($this->req->log,$this->req->mdp);
+		if($a){
+			
+			$this->tpl->assign('idClient',$a->getIdClient());
+			$this->tpl->assign('login',$a->getMail());
+			$this->tpl->assign('nom',$a->getNom());
+			
+			$this->session->ouvrir($a);
+			$res=true;
+		}
+		echo json_encode($res);
+		exit;
+	}
+	
 	public function action_deconnect(){		
 		$this->site->ajouter_message('Vous êtes déconnecté');							
 		$this->session->fermer(); 			

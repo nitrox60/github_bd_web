@@ -36,9 +36,9 @@
 		public function getAddable(){ return $this->_addable;}
 		
 		
-		public function setIdLocation($location){
+		public function setIdLoc($location){
 			$location=(int)$location;
-			$this->_idLocation=$location;
+			$this->_idLoc=$location;
 		}
 		
 		public function setDateLoc($dateLoc){ 

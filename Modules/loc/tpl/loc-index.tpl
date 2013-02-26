@@ -1,4 +1,16 @@
 ﻿<link rel="stylesheet" href="./styles/loc.css"/>
+
+<div id="popup_name" class="popup_block">
+	<h2>Connexion</h2>
+	<!-- <form id="f_co_pop" name="f_co_pop" method="post" enctype="text/plain" action="?module=login&action=coajax"> -->
+	<fieldset>
+	<label for="ndc_pop">Email</label><input   type="text" name="ndc_pop" id="ndc_pop"/>
+	<label>mdp</label><input type="text" name="mdp_pop" id="mdp_pop"/>
+	<label>&nbsp </label><input type="submit" name="sub_pop" id="sub_pop" value="Connexion" class="co_pop"/>
+	<div id="error_pop"></div>
+	</fieldset>
+	<!-- </form> -->
+</div>
 <div id="test"></div>
 {$f_loc}
 <div id="test2"><a href="#"></a></div>

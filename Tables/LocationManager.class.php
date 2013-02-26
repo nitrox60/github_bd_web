@@ -80,10 +80,10 @@
 	
 		
 		
-		public function listing($id){
+		public function listing(){
 		
-			$q=$this->_db->prepare("SELECT * FROM location WHERE idLocation=:id");
-			$q->execute(array(":id"=> $id));
+			$q=$this->_db->prepare("SELECT * FROM location ");
+			$q->execute();
 			while($rep=$q->fetch(PDO::FETCH_ASSOC))
 			{
 				$tab[]=new Location($rep);
@@ -99,14 +99,12 @@
 
 		  public function get($id)
 		  {
-			if(is_int($id))
-			{
+			
 				$req=$this->_db->prepare("SELECT * FROM location WHERE idLoc=:id");
 				$req->execute(array(":id"=>$id));
 				$rep=$req->fetch(PDO::FETCH_ASSOC);
 				if($rep)return new Location($rep);
 				else return null;
+			
 			}
-			else return null;
-		  }
 	}

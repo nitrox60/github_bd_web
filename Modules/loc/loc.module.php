@@ -58,6 +58,8 @@
 				{
 					$listecar=$vm->listing($mod->getIdModele());
 					$i=0;
+					$open=false;
+						if($this->session->ouverte()) $open=true;
 						if(!$listecar)$tab="undefined";
 						foreach($listecar as $car)
 						{
@@ -72,6 +74,8 @@
 							$tab[$i]['annee']=$car->getAnnee();
 							$tab[$i]['km']=$car->getKm();
 							$tab[$i]['description']=$car->getDescription();
+							if($open)$tab[$i]['open']=true;
+							else $tab[$i]['open']=false;
 							$i++;
 						}
 						echo json_encode($tab);
@@ -86,7 +90,7 @@
 		
 		public function action_rent()
 		{
-			if($this->session->ouverte())
+			if($this->session->ouverte())//si on est connecté 
 			{
 				if($this->req->id)
 				{
