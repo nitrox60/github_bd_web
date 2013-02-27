@@ -43,3 +43,14 @@ img
 	
 	
 }
+
+.link2
+{
+ margin-top:10px;
+ margin-left:33%;
+}
+
+img.clickable:hover
+{
+	cursor:pointer;
+}

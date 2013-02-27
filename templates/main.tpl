@@ -10,9 +10,7 @@
 	</head>
 	<body>
 	<div id='page'>
-		<div id='login'>
-			{$bloc_login}
-		</div>
+		
 	
 		<div id='menu'>
 			
@@ -24,7 +22,9 @@
 			<a href="?module=car">Nos voitures</a>
 			<span id="ifLog">
 			{if (isset($login))}
-				Connecté :{$login}<a href='?module=login&action=deconnect'>Logout</a>{/if}</span>
+				Connecté :{$login}<a href='?module=login&action=deconnect'>Logout</a>
+				{else}<a href="#?w=500" rel="popup_name" class="poplight" >Connexion</a> 
+				{/if}</span>
 			
 		</div>
 		

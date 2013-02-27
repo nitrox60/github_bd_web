@@ -103,8 +103,12 @@ $(function(){
 					url: '?module=login&action=coajax&log='+$("#ndc_pop").val()+'&mdp='+$("#mdp_pop").val(),
 					dataType: 'json',
 					success: function(data,txtStatus, jqXHR){
-						if(data==true) $('a.close, #fade').trigger('click');
-						else if(data==false) $("#error_pop").html("Email ou Mot de passe incorrecte!");
+						if(data['bool']==true)
+						{
+							$("#ifLog").html("Connecté : "+data['who']+"<a href='?module=login&action=deconnect'>Logout</a>");
+							$('a.close, #fade').trigger('click');
+						}
+						else if(data['bool']==false) $("#error_pop").html("Email ou Mot de passe incorrecte!");
 					}
 					});
 			else

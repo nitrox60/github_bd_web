@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2013-02-18 19:02:04
+<?php /* Smarty version Smarty-3.1.1, created on 2013-02-27 15:58:15
          compiled from "templates\main.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1932451227aac27f872-63828839%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6aae8c641d21506c83b2eef3095b796e7ec90482' => 
     array (
       0 => 'templates\\main.tpl',
-      1 => 1356525050,
+      1 => 1361980692,
       2 => 'file',
     ),
   ),
@@ -15,10 +15,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.1',
+  'unifunc' => 'content_51227aac44542',
   'variables' => 
   array (
     'titre' => 0,
-    'bloc_login' => 0,
     'login' => 0,
     'messages' => 0,
     'module' => 0,
@@ -26,8 +27,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bloc_contenu' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.1',
-  'unifunc' => 'content_51227aac44542',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51227aac44542')) {function content_51227aac44542($_smarty_tpl) {?><!-- start template-->
 <html>
@@ -42,10 +41,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</head>
 	<body>
 	<div id='page'>
-		<div id='login'>
-			<?php echo $_smarty_tpl->tpl_vars['bloc_login']->value;?>
-
-		</div>
+		
 	
 		<div id='menu'>
 			
@@ -58,7 +54,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<span id="ifLog">
 			<?php if ((isset($_smarty_tpl->tpl_vars['login']->value))){?>
 				Connecté :<?php echo $_smarty_tpl->tpl_vars['login']->value;?>
-<a href='?module=login&action=deconnect'>Logout</a><?php }?></span>
+<a href='?module=login&action=deconnect'>Logout</a>
+				<?php }else{ ?><a href="#?w=500" rel="popup_name" class="poplight" >Connexion</a> 
+				<?php }?></span>
 			
 		</div>
 		

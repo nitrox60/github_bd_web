@@ -58,7 +58,8 @@ class Login extends Module{
 	
 	public function action_coajax()
 	{
-		$res=false;
+		$res=array();
+		$res['bool']=false;
 		$cm= new ClientManager(DB::get_instance());
 		$a=$cm->connexion($this->req->log,$this->req->mdp);
 		if($a){
@@ -68,7 +69,8 @@ class Login extends Module{
 			$this->tpl->assign('nom',$a->getNom());
 			
 			$this->session->ouvrir($a);
-			$res=true;
+			$res['bool']=true;
+			$res['who']=$a->getMail();
 		}
 		echo json_encode($res);
 		exit;
