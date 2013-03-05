@@ -1,4 +1,4 @@
-﻿<link rel="stylesheet" href="./styles/loc.css"/>
+﻿<link rel="stylesheet" href="./styles/loc-index.css"/>
 <!-- <a href="#?w=500" rel="popup_name" class="poplight" style="display:none;">En savoir plus</a>  -->
 <div id="popup_name" class="popup_block">
 	<h2>Vous n'êtes pas connecté</h2>
@@ -20,5 +20,5 @@
 <div style="clear:both;"></div>
 
 <script src="./js/jquery-1.4.3.min.js"></script>
-<script src="./js/loc.js"></script>
+<script src="./js/loc-index.js"></script>
 	

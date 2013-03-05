@@ -31,6 +31,12 @@ class Form{
 		return $s;		
 	}
 	
+	function add_captcha($name,$id,$label='&nbsp;'){
+		$s =  new HTMLInput(CAPTCHA,$name,$id,$label);
+		$this->fields[][$name]=$s;
+		return $s;		
+	}
+	
 	function add_dateAndTime($name,$id,$label='&nbsp;'){
 		$s =  new HTMLInput(DATEANDTIME,$name,$id,$label);
 		$this->fields[][$name]=$s;

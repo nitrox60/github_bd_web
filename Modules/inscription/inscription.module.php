@@ -28,6 +28,24 @@
 			}
 			else
 			{
+			
+				$dir = "./images/captcha";
+
+			// Ouvre un dossier bien connu, et liste tous les fichiers
+			if (is_dir($dir)) {
+				if ($dh = opendir($dir)) {
+					while (($file = readdir($dh)) !== false) {
+						//echo "fichier : $file : type : " . filetype($dir . $file) . "\n";
+						$captcha[]=$file;
+					}
+					closedir($dh);
+				}
+			}
+			$length=0;
+			foreach($captcha as $cp)
+				$length++;
+			$nb=rand(2,$length-1);
+			echo var_dump($length."ee".$nb);
 				$f=new Form("?module=inscription&action=valide","f_ins");	//Creation du formulaire
 				$f->add_text("nom","nom","Nom");
 				$f->add_text("prenom","prenom","Prénom");
@@ -37,9 +55,12 @@
 				$f->add_text("mail","mail","Mail");
 				$f->add_password("mdp","mdp","Mot de passe");
 				$f->add_password("mdp2","mdp2","Confirmation");
+				$f->add_captcha("cap","cap","Code de confirmation")->set_captcha($captcha[$nb]);
+				$f->add_hidden("hide","hide","")->set_value($captcha[$nb]);
 				$f->add_submit("Valider","valIns")->set_value("Valider");
 				$this->session->formIns=$f ;				
 			}
+			
 			
 			$this->tpl->assign("f_ins",$f);
 			
@@ -83,6 +104,15 @@
 						// --- Champs confirmation --- //
 			if($this->req->mdp!=$this->req->mdp2) $errors[]="La confirmation ne correspond pas au mot de passe";
 			
+					// --- Vérification CAPTCHA --- //
+				if( ($this->req->hide) &&($this->req->cap))
+				{
+					$cap=$this->req->hide;
+					$cap=substr($cap,2,3);
+					echo var_dump($cap);
+					if($cap!=$this->req->cap) $errors[]="Le captcha n'est pas bon";
+				}
+			
 			
 			// -- Si on trouve des erreurs on les affiche en haut du formulaire -- //
 			if(isset($errors[0])){
@@ -116,12 +146,44 @@
 				
 				$clt['mail']=$this->req->mail;
 				$clt['mdp']=$this->req->mdp;
+				$clt['validate']=0;
 				$client= new Client($clt);
 				$cm->add($client); 	
+				$client2=$cm->connexion($clt['mail'],$clt['mdp']);
 				// On supprime maintenant la variable contenant les entrées de l'utilisateur sur le form inscription.
 				unset($this->session->formIns);
+				// --On envoie le mail avec la vérif--
+				if($client2)
+				{
+				$subject="Loca-Rent : Bienvenue chère client.";
+				$to=$clt['mail'];
+				$code=md5($clt['prenom'].$clt['nom'].time());
+				$vm=new VerifManager(DB::get_instance());
+				$ver['codeVerif']=$code;
+				$ver['idClient']=$client2->getIdClient();
+				//echo var_dump($client->getIdClient());
+				$verif=new Verif($ver);
+				$vm->add($verif);
 				
-				$this->site->ajouter_message("inscription reussie!");
+				$securelink='http://localhost/projet_BD-WEB/github_bd_web/?module=inscription&action=verif&id='.urlencode($client2->getIdClient()).'&code='.urlencode($code);
+				$msg="<h2>LOCA-RENT</h2><br /><p>Bienvenue chez Loca-Rent,</p> pour continuer votre inscription merci de cliquez sur le lien ci-dessus<br /><a href=".$securelink.">".$securelink."</a>";
+				// Dans le cas où nos lignes comportent plus de 70 caractères, nous les coupons en utilisant wordwrap()
+				//$msg = wordwrap($msg, 70, "\r\n");
+				
+				// Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
+				$headers  = 'MIME-Version: 1.0' . "\r\n";
+				$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+
+			 // En-têtes additionnels
+			 $headers .= 'To: '.$clt['prenom'].' '.$clt['nom'].' <'.$clt['mail'].'>' . "\r\n";
+			 $headers .= 'From: Loca-Rent <bouldog1511@hotmail.com>' . "\r\n";
+				mail($to,$subject,$msg,$headers);
+				
+				$this->site->ajouter_message("inscription reussie!$code");
+			
+				Site::redirect("index");
+				}
+				$this->site->ajouter_message("inscription pas reussie!$");
 			
 				Site::redirect("index");
 			}

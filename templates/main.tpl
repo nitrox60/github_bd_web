@@ -14,7 +14,7 @@
 	
 		<div id='menu'>
 			
-			
+			<a href="?module=loc&action=mail">Mail</a>
 			<a href="?module=login">Login</a>
 			<a href="?module=inscription">Inscription</a>
 			<a href="?module=admSpace">Administration</a>
@@ -31,19 +31,26 @@
 		
 	
 		<div id='zonemessage'>
-			Message ajouté avec $this->site->ajouter_message("");
+			<!-- Message ajouté avec $this->site->ajouter_message(""); -->
 			    {$messages}
 		</div>
 		
 		<div id='contenu'>
-			Dans cette zone, on affiche le contenu généré par le module <b>{$module}->{$action}()</b>
+			<!-- Dans cette zone, on affiche le contenu généré par le module <b>{$module}->{$action}()</b>-->
 			<div id='module'>
 
 				{$bloc_contenu}
 			</div>
 		</div>
+		
+		<!-- informations footer -->
+	<div id="footer">
+	<div id="infofoot"><a href="#"> Remerciement</a> <a href="#">Contact</a> <a href="#">Nos adresses</a> <a href="#">Mentions légales</a></div>
+	<div id="madeby">Made By TAYAA-DALMAS Corporation. All Right Reserved</div>
+	</div>
 	</div>
 	</body>
+	
 		
 </html>
 <!-- end template-->

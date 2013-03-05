@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2013-02-19 13:17:29
+<?php /* Smarty version Smarty-3.1.1, created on 2013-03-04 08:37:56
          compiled from "modules\login\tpl\login-logadmin.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1945951237b690e5970-97451570%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1672151345d64becda0-76825944%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1945951237b690e5970-97451570',
+  'nocache_hash' => '1672151345d64becda0-76825944',
   'function' => 
   array (
   ),
@@ -21,9 +21,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.1',
-  'unifunc' => 'content_51237b691461a',
+  'unifunc' => 'content_51345d64c4d2c',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51237b691461a')) {function content_51237b691461a($_smarty_tpl) {?>﻿Connexion Administrateur
+<?php if ($_valid && !is_callable('content_51345d64c4d2c')) {function content_51345d64c4d2c($_smarty_tpl) {?>﻿Connexion Administrateur
 <?php echo $_smarty_tpl->tpl_vars['f_logadm']->value;?>
 
 <div style="clear:both;"></div><?php }} ?>

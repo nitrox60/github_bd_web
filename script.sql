@@ -9,7 +9,8 @@ create table client(
 	vip boolean,
 	dateInscription date,
 	mail varchar(50),
-	mdp varchar(50)
+	mdp varchar(50),
+	validate boolean
 	)engine=innodb;
 	
 create table marque(
@@ -68,5 +69,14 @@ create table admin(
 	idAdm int(3) auto increment,
 	mdpAdm varchar(33)
 	)engine=innodb;
+	
+create table verif(
+	idVerif varchar(13) primary key,
+	codeVerif varchar(33),
+	idClient int(3),
+	constraint csci FOREIGN KEY (idClient) references client(idClient)
+	)engine=innodb;
+	
+	
 
 INSERT INTO admin VALUES('','21232f297a57a5a743894a0e4a801fc3');

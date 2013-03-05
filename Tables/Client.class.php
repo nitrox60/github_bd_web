@@ -11,6 +11,7 @@
 		private $_dateInscription;
 		private $_mail;
 		private $_mdp;//mdp crypter md5
+		private $_validate;//Si le compte est validé ou non.
 		private $_addable;
 		
 		public function __construct(array $donnees)
@@ -43,6 +44,7 @@
 		public function getDateInscription(){ return $this->_dateInscription;}
 		public function getMail(){ return $this->_mail;}
 		public function getMdp(){ return $this->_mdp;}
+		public function getValidate(){ return $this->_validate;}
 		public function getAddable(){ return $this->_addable;}
 		
 		
@@ -129,6 +131,14 @@
 			else{
 				trigger_error("le mdp n'est pas une string",E_USER_WARNING);
 				$this->_addable=false;
+			}
+		}
+		
+		public function setValidate($val)
+		{
+			if( ($val==0) || ($val==1))
+			{
+				$this->_validate=$val;
 			}
 		}
 	}

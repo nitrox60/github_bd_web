@@ -12,7 +12,7 @@
 		
 			if($clt->getAddable())
 			{
-				$q = $this->_db->prepare("INSERT INTO client SET  nom=:nom, prenom=:prenom, rue=:rue, codePostal=:cp, ville=:ville, vip=:vip, dateInscription=:dateIns,  mail=:mail, mdp=:mdp");
+				$q = $this->_db->prepare("INSERT INTO client SET  nom=:nom, prenom=:prenom, rue=:rue, codePostal=:cp, ville=:ville, vip=:vip, dateInscription=:dateIns,  mail=:mail, mdp=:mdp, validate=:val");
 				
 				$q->execute(array(":nom" => $clt->getNom(),
 									":prenom" => $clt->getPrenom(),
@@ -22,7 +22,8 @@
 									":vip" => $clt->getVip(),
 									":dateIns" => $clt->getDateInscription(),
 									":mail" => $clt->getMail(),
-									":mdp" => $clt->getMdp()								
+									":mdp" => $clt->getMdp(),
+									":val"=>$clt->getValidate()
 				));
 				
 			}
@@ -87,7 +88,7 @@
 
 		  public function update(Client $clt)
 		  {
-			$req=$this->_db->prepare("UPDATE client SET nom=:nom, prenom=:prenom, rue=:rue, codePostal=:cp, ville=:ville, vip=:vip, dateInscription=:dateIns,  mail=:mail WHERE idClient=:id");
+			$req=$this->_db->prepare("UPDATE client SET nom=:nom, prenom=:prenom, rue=:rue, codePostal=:cp, ville=:ville, vip=:vip, dateInscription=:dateIns,  mail=:mail, mdp=:mdp, validate=:val WHERE idClient=:id");
 			
 				
 				$req->execute(array(":nom" => $clt->getNom(),
@@ -97,7 +98,9 @@
 									":ville" => $clt->getVille(),
 									":vip" => $clt->getVip(),
 									":dateIns" => $clt->getDateInscription(),
-									":mail" => $clt->getMail()	,
+									":mail" => $clt->getMail(),
+									":mdp" => $clt->getMdp(),
+									":val" => $clt->getValidate(),
 									":id" => $clt->getIdClient()
 				));
 		  }

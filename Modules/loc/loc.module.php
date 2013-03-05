@@ -112,10 +112,52 @@
 					$f->add_submit("valider","valider")->set_value("Valider");
 					$this->tpl->assign("f_rent",$f);
 					$this->session->frent=$f;
-					echo var_dump($_SERVER['HTTP_USER_AGENT']);
+					//echo var_dump($_SERVER['HTTP_USER_AGENT']);
 				}
 			}else Site::redirect("Login");
 			
+			
+		
+		}
+		
+		public function action_mail()
+		{
+			$subject="Loca-Rent : Bienvenue chère premier client.";
+			$to="redouan.tayaa@gmail.com";
+			$msg="<h2>LOCA-RENT</h2><br /><p>Bienvenue chez Loca-Rent,</p> vous êtes notre premier clients et vous recevez donc vous avez 1 location 100% OFFERTE!<br /><h1>PS: Toute voiture amenée eet revendu au Maroc sera FACTURé le DOUBLE !!<br /> Si vous ne souhaitez plus recevoir de mail ... Bah c'est dommage maintenant que j'ai trouvé comment on fait t'ai baizé !!";
+			// Dans le cas où nos lignes comportent plus de 70 caractères, nous les coupons en utilisant wordwrap()
+			//$msg = wordwrap($msg, 70, "\r\n");
+			
+			// Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
+			$headers  = 'MIME-Version: 1.0' . "\r\n";
+			$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+
+		 // En-têtes additionnels
+		 $headers .= 'To: Redou l\'indou <redouan.tayaa@gmail.com>' . "\r\n";
+		 $headers .= 'From: Loca-Rent <jordan.dalmas@gmail.com>' . "\r\n";
+			mail($to,$subject,$msg,$headers);
+		}
+		
+		public function action_infoajax() // Renvoie en ajax les informations de locations pour une voiture données
+		{
+			if($this->req->id)
+			{
+				$db=DB::get_instance();
+				$lm=new LocationManager($db);
+				$infos=$lm->infoLoc($this->req->id);
+				$i=0;
+				foreach($infos as $inf)
+				{
+					$tab[$i]['dateLoc']=$inf->getDateLoc();
+					$tab[$i]['dateRendu']=$inf->getDateRendu();
+					$i++;
+				}
+				if(!$infos)$tab="undefined";
+			//	echo var_dump($tab);
+				echo json_encode($tab);
+				exit;
+				
+			}
 			
 		
 		}

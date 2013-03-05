@@ -15,6 +15,7 @@ define ("HIDDEN","hidden");
 define ("DATUM","date");				
 define ("DATEANDTIME","dateandtime");	
 define ("FILE","file");				
+define ("CAPTCHA","captcha");				
 
 class HTMLInput{
 		
@@ -28,6 +29,7 @@ class HTMLInput{
 	public $selected="";
 	public $required=false;
 	public $error=false;
+	public $cap="e";
 		
 	public function __construct($type,$name='',$id='',$label='&nbsp;',$options=array()){
 		$this->type=$type;
@@ -44,6 +46,11 @@ class HTMLInput{
 
 	public function set_value($val){
 		$this->value=htmlspecialchars($val,ENT_QUOTES);
+		return $this;
+	}
+	
+	public function set_captcha($val){
+		$this->cap=$val;
 		return $this;
 	}
 
@@ -67,6 +74,9 @@ class HTMLInput{
 		switch($this->type){
 			case TEXT : 
 			return "$label<input $common type='text' value='{$this->value}' />" ;	
+			
+			case CAPTCHA : 
+			return "$label<input $common type='text'  /><img style='clear:right;float:left;' id='captcha' src='./images/captcha/{$this->cap}'/>" ;	
 
 			case DATUM : 
 			return "$label<input $common type='date' value='{$this->value}' />" ;
@@ -108,8 +118,7 @@ class HTMLInput{
 						else	$m.="<option value=\"$j\">$j</option>";
 					}
 				$s="</select>";
-				$f='<script src="./js/jquery-1.4.3.min.js"></script><script src="./js/jquery-ui-1.8.5.custom.min.js"></script><script> $(function() {$("#dateloc").datepicker({ dateFormat: "yy-mm-dd" , showAnim: "fold" }); $("#daterendu").datepicker({ dateFormat: "yy-mm-dd" , showAnim: "fold" });		});</script>';
-				return  $r.$e.$h.$p.$m.$s.$f;
+				return  $r.$e.$h.$p.$m.$s;
 				
 			case FILE : 
 			return "$label<input type='file' $common value='{$this->value}' />" ;

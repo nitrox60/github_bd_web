@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2013-02-27 16:13:05
+<?php /* Smarty version Smarty-3.1.1, created on 2013-03-04 08:38:03
          compiled from "modules\admSpace\tpl\admSpace-index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:3059251237b70e3b546-29639158%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1170251345d6b5c5f03-37691422%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,15 +11,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '3059251237b70e3b546-29639158',
+  'nocache_hash' => '1170251345d6b5c5f03-37691422',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.1',
-  'unifunc' => 'content_51237b70edaef',
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.1',
+  'unifunc' => 'content_51345d6b63a61',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51237b70edaef')) {function content_51237b70edaef($_smarty_tpl) {?>﻿
+<?php if ($_valid && !is_callable('content_51345d6b63a61')) {function content_51345d6b63a61($_smarty_tpl) {?>﻿
 <link rel="stylesheet" href="./styles/admSpace.css"/>
 <h2>Espace administration</h2>
 

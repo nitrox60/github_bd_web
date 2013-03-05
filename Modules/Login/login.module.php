@@ -148,5 +148,28 @@ class Login extends Module{
 			Site::redirect("login","logadm");
 		}
 	}
+	
+	public action_verif()
+	{
+	
+		if( ($this->req->codeVerif) && ($this->req->id))
+		{
+		  $db=DB::get_instance();
+		  $vm=new VerifManager($db);
+		  $verif=$vm->isOk($this->req->id);
+		  if(!$verif)$res="Votre code n'est pas bon, si vous ne parvenez pas a activer votre compte même après avoir vérifié celui-ci contactez le support. (support AT loca-rent DOT fr) Remplez AT par '@' et DOT par '.'. ";
+		  else
+		  {
+			if($verif->getCodeVerif()==$this->req->codeVerif)
+			{
+
+			}
+			else
+			{
+				$res="Votre code n'est pas bon, si vous ne parvenez pas a activer votre compte même après avoir vérifié celui-ci contactez le support. (support AT loca-rent DOT fr) Remplez AT par '@' et DOT par '.'. ";
+			}
+		  }
+		}
+	}
 }
 ?>

@@ -30,6 +30,22 @@
 			
 		}
 		
+		/** infoLoc recoit un idvoiture en paramètre et renvoie des informations sur la locations de la voiture en question ou null si la voiture n'est pas en location **/
+		public function infoLoc($idvoiture)
+		{
+			
+			
+			$req=$this->_db->prepare("SELECT * FROM location WHERE idVoiture=:idv");
+			$req->execute(array(":idv" => $idvoiture));
+			
+			while($tab=$req->fetch(PDO::FETCH_ASSOC))
+			{
+				$res[]=new Location($tab);
+			}
+		
+			return $res;
+		}
+		
 		public function isAvailable($id)
 		{
 			//$q=$this->_db->prepare("SELECT COUNT(location.idLoc) AS locUse, modele.qteStock  FROM modele,location WHERE location.idModele=modele.idModele AND idModele=:id GROUP BY idLoc");
