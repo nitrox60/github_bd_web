@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2013-03-02 18:05:14
+<?php /* Smarty version Smarty-3.1.1, created on 2013-03-05 10:04:39
          compiled from "templates\main.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2599051323f5ab9e031-13517489%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6aae8c641d21506c83b2eef3095b796e7ec90482' => 
     array (
       0 => 'templates\\main.tpl',
-      1 => 1362242102,
+      1 => 1362477875,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.1',
+  'unifunc' => 'content_51323f5ac69a5',
   'variables' => 
   array (
     'titre' => 0,
@@ -25,8 +27,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'bloc_contenu' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.1',
-  'unifunc' => 'content_51323f5ac69a5',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51323f5ac69a5')) {function content_51323f5ac69a5($_smarty_tpl) {?><!-- start template-->
 <html>
@@ -66,6 +66,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<!-- Message ajouté avec $this->site->ajouter_message(""); -->
 			    <?php echo $_smarty_tpl->tpl_vars['messages']->value;?>
 
+				<img src="./images/ban.jpeg" style="width:104%; margin:-2%;margin-bottom:-4%;"/>
 		</div>
 		
 		<div id='contenu'>

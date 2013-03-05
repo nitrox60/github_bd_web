@@ -33,6 +33,7 @@
 		<div id='zonemessage'>
 			<!-- Message ajouté avec $this->site->ajouter_message(""); -->
 			    {$messages}
+				<img src="./images/ban.jpeg" style="width:104%; margin:-2%;margin-bottom:-4%;"/>
 		</div>
 		
 		<div id='contenu'>
