@@ -108,12 +108,14 @@ class HTMLInput{
 				$i=0;
 				$h="";
 				$m="";
-					for($i=0;$i<24;$i++){
-						if($i<10) {$a='0'.$i;$h.="<option value=\"$a\">$a</option>";}
-						else $h.="<option value=\"$i\">$i</option>";
+					for($i=8;$i<19;$i++){
+						
+							if($i<10) {$a='0'.$i;$h.="<option value=\"$a\">$a</option>";}
+							else $h.="<option value=\"$i\">$i</option>";
+						
 					}
 				$p="</select> <label for='m'>Minute</label><select id='{$this->id}m' name='{$this->name}m'>";
-					for($j=0;$j<60;$j++){
+					for($j=0;$j<60;$j+=5){
 						if($j<10){ $b='0'.$j; $m.="<option value=\"$b\">$b</option>";}
 						else	$m.="<option value=\"$j\">$j</option>";
 					}

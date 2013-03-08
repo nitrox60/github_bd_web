@@ -1,4 +1,5 @@
 ﻿$(function(){
+
 $.datepicker.regional['fr'] = {
 				closeText: 'Fermer',
 				prevText: '&#x3c;Préc',
@@ -17,6 +18,7 @@ $.datepicker.regional['fr'] = {
 				showMonthAfterYear: false
 				};
 			$.datepicker.setDefaults($.datepicker.regional['fr']);
+			
 			var idURL=document.location.search.split('=')[3];//récupère l'idée dans la barre d'url.
 					$("#dateloc").datepicker({ dateFormat: "yy-mm-dd" , showAnim: "fold" , minDate: new Date()});
 					$("#daterendu").datepicker({ dateFormat: "yy-mm-dd" , showAnim: "fold", minDate: new Date()});		
@@ -79,6 +81,7 @@ $.datepicker.regional['fr'] = {
 					
 					function colorDay(yearStart,monthStart,numberStart,yearStop,monthStop,numberStop)
 					{
+						var COLOR= 'red';
 						var find=false;
 						// alert(yearStart+monthStart+numberStart+yearStop+monthStop+numberStop);
 						//tableau qui contient les mois et leur équivalent numérique pour comparé.
@@ -101,7 +104,7 @@ $.datepicker.regional['fr'] = {
 											{
 												
 												find=true;
-												$(this).css("background","none").css("border","none").parent().css("border","1px solid blue");
+												$(this).css("background","none").css("border","none").parent().css("border","1px solid "+COLOR).toggleClass('ui-datepicker-unselectable').toggleClass('ui-state-disabled') ;
 												$(this).hover(function(){$(this).css("cursor","default");});
 											}
 										}	
@@ -115,7 +118,7 @@ $.datepicker.regional['fr'] = {
 											{
 												
 												
-												$(this).css("background","none").css("border","none").parent().css("border","1px solid blue");
+												$(this).css("background","none").css("border","none").parent().css("border","1px solid "+COLOR).toggleClass('ui-datepicker-unselectable').toggleClass('ui-state-disabled');
 												$(this).hover(function(){$(this).css("cursor","default");});
 											}
 											
@@ -125,7 +128,7 @@ $.datepicker.regional['fr'] = {
 											
 													
 													
-													$(this).css("background","none").css("border","none").parent().css("border","1px solid blue");
+													$(this).css("background","none").css("border","none").parent().css("border","1px solid "+COLOR).toggleClass('ui-datepicker-unselectable').toggleClass('ui-state-disabled');
 													$(this).hover(function(){$(this).css("cursor","default");});
 												
 											
@@ -136,7 +139,7 @@ $.datepicker.regional['fr'] = {
 											{
 												
 												
-												$(this).css("background","none").css("border","none").parent().css("border","1px solid blue");
+												$(this).css("background","none").css("border","none").parent().css("border","1px solid "+COLOR).toggleClass('ui-datepicker-unselectable').toggleClass('ui-state-disabled');
 												$(this).hover(function(){$(this).css("cursor","default");});
 											}
 										}
@@ -156,20 +159,20 @@ $.datepicker.regional['fr'] = {
 										{
 											
 											
-											$(this).css("background","none").css("border","none").parent().css("border","1px solid blue");
+											$(this).css("background","none").css("border","none").parent().css("border","1px solid "+COLOR).toggleClass('ui-datepicker-unselectable').toggleClass('ui-state-disabled');
 											$(this).hover(function(){$(this).css("cursor","default");});
 										}
 										
 									}
 									else if(month[$('.ui-datepicker-month').html()]>month[monthStart])
 									{
-										$(this).css("background","none").css("border","none").parent().css("border","1px solid blue");
+										$(this).css("background","none").css("border","none").parent().css("border","1px solid "+COLOR).toggleClass('ui-datepicker-unselectable').toggleClass('ui-state-disabled');
 											$(this).hover(function(){$(this).css("cursor","default");});
 									}
 								}
 								else if( ($('.ui-datepicker-year').html()>yearStart) &&($('.ui-datepicker-year').html()<yearStop))
 								{
-										$(this).css("background","none").css("border","none").parent().css("border","1px solid blue");
+										$(this).css("background","none").css("border","none").parent().css("border","1px solid "+COLOR).toggleClass('ui-datepicker-unselectable').toggleClass('ui-state-disabled');
 												$(this).hover(function(){$(this).css("cursor","default");});
 								
 								}
@@ -181,13 +184,13 @@ $.datepicker.regional['fr'] = {
 										{
 											
 											
-											$(this).css("background","none").css("border","none").parent().css("border","1px solid blue");
+											$(this).css("background","none").css("border","none").parent().css("border","1px solid "+COLOR).toggleClass('ui-datepicker-unselectable').toggleClass('ui-state-disabled');
 											$(this).hover(function(){$(this).css("cursor","default");});
 										}
 									}
 									else if(month[$('.ui-datepicker-month').html()]<month[monthStop])
 									{
-										$(this).css("background","none").css("border","none").parent().css("border","1px solid blue");
+										$(this).css("background","none").css("border","none").parent().css("border","1px solid "+COLOR).toggleClass('ui-datepicker-unselectable').toggleClass('ui-state-disabled');
 											$(this).hover(function(){$(this).css("cursor","default");});
 									}
 								}
@@ -202,7 +205,7 @@ $.datepicker.regional['fr'] = {
 	//Ici on recupère les dates de début/fin de location
 	//apparition chargement.
 	$('#load').toggleClass('activeLoad');
-	$('body').prepend($('#load').show());
+	$('body').prepend($('#load').show().css("height","110%"));
 	$.ajax({type: 'GET',
 			url: '?module=loc&action=infoajax&id='+idURL,
 			dataType: 'json',

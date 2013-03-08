@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2013-03-05 10:04:39
+<?php /* Smarty version Smarty-3.1.1, created on 2013-03-08 11:09:12
          compiled from "templates\main.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2599051323f5ab9e031-13517489%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6aae8c641d21506c83b2eef3095b796e7ec90482' => 
     array (
       0 => 'templates\\main.tpl',
-      1 => 1362477875,
+      1 => 1362740950,
       2 => 'file',
     ),
   ),
@@ -45,28 +45,28 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	
 		<div id='menu'>
 			
-			<a href="?module=loc&action=mail">Mail</a>
-			<a href="?module=login">Login</a>
+		<!--	<a href="?module=loc&action=mail">Mail</a>
+			<a href="?module=login">Login</a> -->
 			<a href="?module=inscription">Inscription</a>
 			<a href="?module=admSpace">Administration</a>
 			<a href="?module=loc">Location</a>
 			<a href="?module=car">Nos voitures</a>
-			<span id="ifLog">
+		<!--	<span id="ifLog">
 			<?php if ((isset($_smarty_tpl->tpl_vars['login']->value))){?>
 				Connecté :<?php echo $_smarty_tpl->tpl_vars['login']->value;?>
 <a href='?module=login&action=deconnect'>Logout</a>
 				<?php }else{ ?><a href="#?w=500" rel="popup_name" class="poplight" >Connexion</a> 
 				<?php }?></span>
-			
+			-->
 		</div>
 		
-		
+
 	
 		<div id='zonemessage'>
 			<!-- Message ajouté avec $this->site->ajouter_message(""); -->
 			    <?php echo $_smarty_tpl->tpl_vars['messages']->value;?>
 
-				<img src="./images/ban.jpeg" style="width:104%; margin:-2%;margin-bottom:-4%;"/>
+				<!-- <img src="./images/ban.jpeg" style="width:104%; margin:-2%;margin-bottom:-4%;"/> -->
 		</div>
 		
 		<div id='contenu'>
@@ -74,7 +74,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 -><?php echo $_smarty_tpl->tpl_vars['action']->value;?>
 ()</b>-->
 			<div id='module'>
-
+			<!-- <a href="#?w=500" rel="popup_name" class="poplight" style="display:none;">En savoir plus</a>  POP UP DE CONNEXION-->
+				<div id="popup_name" class="popup_block">
+					<h2>Vous n'êtes pas connecté</h2>
+					<!-- <form id="f_co_pop" name="f_co_pop" method="post" enctype="text/plain" action="?module=login&action=coajax"> -->
+					<fieldset>
+					<label for="ndc_pop">Email</label><input   type="text" name="ndc_pop" id="ndc_pop"/>
+					<label>mdp</label><input type="password" name="mdp_pop" id="mdp_pop"/>
+					<label>&nbsp </label><input type="submit" name="sub_pop" id="sub_pop" value="Connexion" class="co_pop"/>
+					<div id="error_pop"></div>
+					</fieldset>
+					<!-- </form> -->
+				</div>
 				<?php echo $_smarty_tpl->tpl_vars['bloc_contenu']->value;?>
 
 			</div>
@@ -88,6 +99,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	</div>
 	</body>
 	
-		
+		<script src="./js/jquery-1.4.3.min.js"></script>
+<script src="./js/main.js"></script>
+<script src="./js/jquery-ui-1.8.5.custom.min.js"></script>
+
+
+
 </html>
 <!-- end template--><?php }} ?>

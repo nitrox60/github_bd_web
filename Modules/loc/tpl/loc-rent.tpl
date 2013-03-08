@@ -9,4 +9,5 @@
 
 <script src="./js/jquery-1.4.3.min.js"></script>
 <script src="./js/jquery-ui-1.8.5.custom.min.js"></script>
+
 <script src="./js/loc-rent.js"></script>

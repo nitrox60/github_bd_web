@@ -188,6 +188,58 @@
 						$flag=true;
 					}
 				}
+				
+				//On récupère les locations de la voiture concerné pour vérifié que les date voulu par l'utilisateur sont libre.
+				$lm=new LocationManager(DB::get_instance());
+				$info=$lm->infoLoc($this->req->id);
+				//dateloc et daterendu sont les date rentrer par l'utilisateur
+				$dateloc=$this->req->dateloc." ".$this->req->dateloch.":".$this->req->datelocm.":00";
+				$daterendu=$this->req->daterendu." ".$this->req->daterenduh.":".$this->req->daterendum.":00";
+				$dateloc = new DateTime($dateloc);
+				$dateloc = $dateloc->format('YmdHis');
+				$daterendu = new DateTime($daterendu);
+				$daterendu = $daterendu->format('YmdHis');
+					
+				foreach($info as $i)
+				{
+					
+					// date à tester :
+					$start=$i->getDateLoc();
+					$stop=$i->getDateRendu();
+					$now = date('Y-m-d H:i:s',time()+3600);//Date actuelle.
+					//$tmp2=explode(" ",$l->getDateRendu());
+					
+					
+					
+					
+					// $finloc=$l->getDateRendu();
+					
+					// $debloc =$l->getDateLoc();
+					
+					
+					// on transforme les date en objet datetime. format YYYYMMDDHHMMSS ( 2009-10-10 10:00:00 donnera 20091010100000).
+					//start et stop sont les date de debut/fin des différent location enregistrer en DB
+					$start = new DateTime($start);
+					$start = $start->format('YmdHis');
+					$stop = new DateTime($stop);
+					$stop = $stop->format('YmdHis');
+					$now = new DateTime($now);
+					$now = $now->format('YmdHis');
+					
+					
+					
+					/*
+					$debloc = new DateTime($debloc);
+					$debloc = $debloc->format('YmdHis');
+					$finloc = new DateTime($finloc);
+					$finloc = $finloc->format('YmdHis');
+					*/
+					if( ( ($start<=$dateloc)&&($stop>=$dateloc) ) || ( ($dateloc<=$now) || ($daterendu<=$now) ) || ( ($start<=$daterendu)&&($stop>=$daterendu) ))
+					{
+						$flag=true;
+					}
+					
+				}
 				//location pas encore completement au point
 				
 				if(!$flag) //Si la location est validé
@@ -199,14 +251,20 @@
 					$l['idVoiture']=$this->req->id;
 					$l['idClient']=$user->getIdClient();
 					$loc=new Location($l);
-					$lm=new LocationManager(DB::get_instance());
+					
 					$lm->add($loc);
 					$this->site->ajouter_message("Location enregistrée!");
 					Site::redirect("index");
 				}
+				else $this->site->ajouter_message("Vos dates de location ne sont pas valide.");
 				
 			}else $this->site->ajouter_message("date loc ou date rendu non renseigné");
 			Site::redirect("loc","rent&id=".$this->req->id);
+		}
+		
+		public function action_nojs()
+		{
+		
 		}
 	
 	}

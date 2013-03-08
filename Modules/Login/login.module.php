@@ -149,7 +149,7 @@ class Login extends Module{
 		}
 	}
 	
-	public action_verif()
+	public function action_verif()
 	{
 	
 		if( ($this->req->codeVerif) && ($this->req->id))
