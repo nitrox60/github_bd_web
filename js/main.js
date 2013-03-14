@@ -9,6 +9,14 @@
 		}
 	}
 	*/
+	
+	var who=$("#ifLog").html().split('<')[0].split(':')[1];
+	
+	if(who!="admin")
+	{
+		$("#menu>a[href=?module=admSpace]").hide();
+		if(who!=undefined)$("#menu>a.nodisp").show();
+	}
 	$(document).delegate('input.co_pop[type=submit]','click',function(){
 			var MINLENGTH_NDC=4;
 			var MINLENGTH_MDP=8;
@@ -20,6 +28,7 @@
 						if(data['bool']==true)
 						{
 							$("#ifLog").html("Connecté : "+data['who']+"<a href='?module=login&action=deconnect'>Logout</a>");
+							$("#menu>a.nodisp").show();
 							$('a.close, #fade').trigger('click');
 						}
 						else if(data['bool']==false) $("#error_pop").html("Email ou Mot de passe incorrecte!");

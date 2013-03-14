@@ -9,7 +9,7 @@ $(function(){
 				mq=mq+"<p class=\"mq_but\"style=\"margin-left:"+ml+"%;  width:auto; display:inline-block;\"><a href=\"#\" >"+ $(this).html()+"</a></p>";
 		});
 		
-		$("#test").html(mq);
+		$("#test").html("<div id='testmq'>Marque</div>"+mq);
 		
 		var marq="";
 		$('#test a').click(function(){ //Appelé quand un changement s'éffectue sur la premier liste déroulante
@@ -39,7 +39,7 @@ $(function(){
 									txt+="<span class='mod_but'><a href=\"#\">"+data[i]+"</a></span>"
 								}
 								//$('#sel').html("<label for=\"mod\">Modèle</label><select id=\"mod\" name=\"mod\">"+txt+"</select>").show();
-								$('#test2').html(txt).show();
+								$('#test2').html("<div id='testmq'>Modèle</div>"+txt).show();
 								$('#load').html('');
 							}
 							else
@@ -63,7 +63,7 @@ $(function(){
 			
 			
 			mod=$(this);
-				$('#info').html("<div class='b_loc'><a href='?module=car&action=index&name="+$(mod).html()+"'></div>Infos</a>").show
+				$('#infos').html("<div id='divinfo'><a href='?module=car&action=index&name="+$(mod).html()+"'>Informations sur le modèle "+$(mod).html()+".</a></div>").show
 				//Test de connexion a éffectuer ici. via ajax
 				$.ajax({
 					type: 'GET',

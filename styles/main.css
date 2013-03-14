@@ -57,6 +57,11 @@
 			
 		}
 		
+		#menu>a.nodisp
+		{
+			display:none;
+		}
+		
 }
 		
 /*---------------------	*/
@@ -200,7 +205,8 @@ img.btn_close {
 		{
 
 
-			
+			 line-height:25px;
+
 			text-align:center;
 			border-radius:8px 8px 8px;
 			background: linear-gradient(#04BEED, #0383A3);
@@ -209,7 +215,7 @@ img.btn_close {
 			background: -moz-linear-gradient(#04BEED, #0383A3);
 			background: -o-linear-gradient(#04BEED, #0383A3);
 			border:1px gray solid;
-			
+			margin-top:20%;
 			display:block;
 			text-decoration:none;
 			font-size:10px;
@@ -245,6 +251,18 @@ img.btn_close {
 			font-size: 10px;
 			transition:  0.5s font-size;
 			-webkit-transition:  0.5s font-size;
+			
+		}
+		
+		#contenu{
+			
+			
+			background:#565656;
+			color:black;
+		/*	padding-left:28%;*/
+			border-radius: 6px ;
+			margin-top:15px;
+			
 			
 		}
 }

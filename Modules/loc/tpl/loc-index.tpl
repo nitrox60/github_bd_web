@@ -4,7 +4,7 @@
 {$f_loc}
 <div id="test2"><a href="#"></a></div>
 <div id="car"></div>
-<div id="info"></div>
+<div id="infos"></div>
 <span id="load"></span>
 <div style="clear:both;"></div>
 

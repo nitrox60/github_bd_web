@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.1, created on 2013-03-08 11:09:12
+<?php /* Smarty version Smarty-3.1.1, created on 2013-03-14 17:32:49
          compiled from "templates\main.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2599051323f5ab9e031-13517489%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6aae8c641d21506c83b2eef3095b796e7ec90482' => 
     array (
       0 => 'templates\\main.tpl',
-      1 => 1362740950,
+      1 => 1363282364,
       2 => 'file',
     ),
   ),
@@ -49,15 +49,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<a href="?module=login">Login</a> -->
 			<a href="?module=inscription">Inscription</a>
 			<a href="?module=admSpace">Administration</a>
+			<a href="?module=clientmanage" class="nodisp">Mon Compte</a>
 			<a href="?module=loc">Location</a>
-			<a href="?module=car">Nos voitures</a>
-		<!--	<span id="ifLog">
+			<a href="#">Nos Adresses</a>
+			<span id="ifLog">
 			<?php if ((isset($_smarty_tpl->tpl_vars['login']->value))){?>
 				Connecté :<?php echo $_smarty_tpl->tpl_vars['login']->value;?>
 <a href='?module=login&action=deconnect'>Logout</a>
 				<?php }else{ ?><a href="#?w=500" rel="popup_name" class="poplight" >Connexion</a> 
 				<?php }?></span>
-			-->
+			
 		</div>
 		
 

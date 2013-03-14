@@ -1,7 +1,31 @@
 ﻿/* Style de la page loc-index.tpl */
 
 
+#divinfo
+{
+	width:20%;
+	background-color:rgba(153,153,153,0.8);
+	margin-left:33%;
+	border:2px solid black;
+	border-radius:10px;
+}
+#divinfo>a
+{
+text-align:center;
+color:white;
+	width:100%;
+	display:block;
+	text-decoration:none;
+	position:relative;
+}
 
+#testmq
+{
+	width:10%;
+	float:left;
+	line-height:2em;
+	text-decoration:underline;
+}
 #marque
 {
 	display:none;
@@ -29,57 +53,59 @@ display: table;
    padding: 0;
 }
 
-.mod_but
-{
-	
-	background: #A5AA95;
-	border-radius: 10px 10px 10px 10px;
-	padding:2px;
-	box-shadow: 1.5px 1.5px 1.5px 1.5px #6F7364;
-	height:2em;
-	display: table-cell;
-	color:black;
-	border: solid 1px white;
-	margin-left:30px;
+	.mod_but
+	{
+		
+		background: #A5AA95;
+		border-radius: 10px 10px 10px 10px;
+		padding:2px;
+		box-shadow: 1.5px 1.5px 1.5px 1.5px #6F7364;
+		height:2em;
+		display: table-cell;
+		color:black;
+		border: solid 1px white;
+		margin-left:30px;
 
-	
-}
+		
+	}
 
-.mod_but>a
-{
-	text-decoration:none;
-	color:black;
-	display:block;
-	text-align:center;
-	position:relative;
-	text-align: center;
-   padding: 3px 8px 17px 8px;
-}
+	.mod_but>a
+	{
+		text-decoration:none;
+		color:black;
+		display:block;
+		text-align:center;
+		position:relative;
+		text-align: center;
+	   padding: 3px 8px 17px 8px;
+	}
 
-.mq_but
-{
-	
-	background: -webkit-linear-gradient(#04BEED, #0383A3);
-	border-radius: 10px 10px 10px 10px;
-	padding:2px;
-	
-	height:2em;
-	display: table-cell;
-	
-}
+	.mq_but
+	{
+		
+		background: -webkit-linear-gradient(#04BEED, #0383A3);
+		border-radius: 10px 10px 10px 10px;
+		padding:2px;
+		
+		height:2em;
+		display: table-cell;
+		
+	}
 
-.mq_but>a
-{
-	display:block;
-	text-align:center;
-	text-decoration: none;
-	color:black;
-	position:relative;
-	text-align: center;
-   padding: 3px 8px 17px 8px;
-   
-	
-}
+	.mq_but>a
+	{
+		display:block;
+		text-align:center;
+		text-decoration: none;
+		color:black;
+		position:relative;
+		text-align: center;
+	   padding: 3px 8px 17px 8px;
+	   
+		
+	}
+
+
 
 .mq_but>a:hover::before,
 .mq_but>a:focus::before{
@@ -242,4 +268,129 @@ label, .voiture
 }
 
 
+@media screen and (max-width:420px)
+{
 
+	.mq_but
+{
+	
+	background: -webkit-linear-gradient(#04BEED, #0383A3);
+	border-radius: 10px 10px 10px 10px;
+	padding:2px;
+	
+	height:2em;
+	display: table-cell;
+	float:left;clear:both;
+	margin-bottom:2%;
+}
+
+.mq_but>a
+{
+	display:block;
+	text-align:center;
+	text-decoration: none;
+	color:black;
+	position:relative;
+	text-align: center;
+  /* padding: 3px 8px 17px 8px;*/
+   
+	
+}
+
+.mod_but
+{
+	
+	background: #A5AA95;
+	border-radius: 10px 10px 10px 10px;
+	
+	box-shadow: 1.5px 1.5px 1.5px 1.5px #6F7364;
+	height:2em;
+	display: table-cell;
+	color:black;
+	border: solid 1px white;
+	float:left;
+	clear:both;
+	margin-bottom:2%;
+
+	
+}
+
+.mod_but>a
+{
+	text-decoration:none;
+	color:black;
+	display:block;
+	text-align:center;
+	position:relative;
+	text-align: center;
+  /*padding: 3px 8px 17px 8px;*/
+}
+
+#car
+{
+	/*width: 70%;*/
+	
+}
+
+.voiture
+{
+	width: 100%;
+	border: 2 px solid black;
+	border-radius: 6px 6px 6px;
+margin-left:15%;
+	margin-bottom: 3%;
+		font-size:12px;
+
+	/*padding:5px;*/
+	color:black;
+	background-color:rgba(153,153,153,0.8);
+}
+
+.info
+{
+
+font-weight:bold;
+	font-size:12px;
+
+/*margin-left:25%;
+margin-top:10px;*/
+}
+
+.desc
+{
+/*	margin-left: 10%;*/
+	text-decoration:underline;
+		font-size:12px;
+
+}
+
+.b_loc a{
+
+ text-decoration :none;
+ display:block;
+ line-height:40px;
+ width:40%;
+ border : 1px solid black;
+ border-radius: 10px 10px 7px;
+	font-size:14px;
+	  background: -webkit-linear-gradient(#028DFF, #01437C);
+   background:    -moz-linear-gradient(#028DFF, #01437C);
+   background:     -ms-linear-gradient(#028DFF, #01437C);
+   background:      -o-linear-gradient(#028DFF, #01437C);
+   background: linear-gradient(#028DFF, #16BC03);
+text-align:center;
+
+	margin-bottom:5px;
+	margin-top:4%;
+
+
+	margin-left: 20%
+	color: black;
+
+	
+ 
+
+
+}
+
+}

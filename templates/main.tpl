@@ -18,14 +18,15 @@
 			<a href="?module=login">Login</a> -->
 			<a href="?module=inscription">Inscription</a>
 			<a href="?module=admSpace">Administration</a>
+			<a href="?module=clientmanage" class="nodisp">Mon Compte</a>
 			<a href="?module=loc">Location</a>
-			<a href="?module=car">Nos voitures</a>
-		<!--	<span id="ifLog">
+			<a href="#">Nos Adresses</a>
+			<span id="ifLog">
 			{if (isset($login))}
 				Connecté :{$login}<a href='?module=login&action=deconnect'>Logout</a>
 				{else}<a href="#?w=500" rel="popup_name" class="poplight" >Connexion</a> 
 				{/if}</span>
-			-->
+			
 		</div>
 		
 
