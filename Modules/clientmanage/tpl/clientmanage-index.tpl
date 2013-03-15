@@ -1,3 +1,3 @@
 ﻿
-{$user}
+{$form}
 <div style="clear:both"></div>
